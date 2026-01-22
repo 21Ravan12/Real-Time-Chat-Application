@@ -1,216 +1,214 @@
-# RealTalk - Enterprise-Grade Messaging Platform
+# RealTalk - Modern Real-Time Messaging Application
 
-> **Next Evolution of Social Communication** - This project is a production-ready enterprise messaging solution based on the Social Media Platform - Chat App (Version 2).
-
----
-
-## 🚀 **Enterprise Features**
-
-### **🔐 Advanced Security System**
-```javascript
-// JWT Authentication & Authorization
-- Role-based access control (RBAC)
-- Socket.io authentication middleware
-- Input validation & sanitization
-- Redis session management
-```
-
-### **💬 Real-Time Communication**
-```javascript
-// WebSocket Implementation
-- Real-time messaging with Socket.io
-- Online/offline status tracking
-- Typing indicators
-- Message delivery receipts
-```
-
-### **📱 Multi-Platform Support**
-```javascript
-// Responsive Design
-- Mobile-test (ForMobileTest.html)
-- Progressive Web App (PWA) ready
-```
-
-### **👥 Social Features**
-```javascript
-// Enhanced Social Integration
-- Advanced friend management system
-- Group management system
-```
+> **Convenient, fast, and secure chat experience**
 
 ---
 
-## 🏗️ **System Architecture**
+## ✨ **Features**
 
-### **Backend Microservices Structure**
-```
-server/
-├── 🛡️ Security Layer
-│ ├── auth.middleware.js # JWT authentication
-│ ├── validation.middleware.js # Input sanitization
-│ └── socketAuth.js # WebSocket security
-├── 💼 Business Logic
-│ ├── controllers/ # Route handlers
-│ └── services/ # business operations
-├── 📊 Data Management
-│ ├── models/ # Database schemas
-│ └── config/ # Multi-database setup
-└── 🔌 Real-Time Layer 
-└── sockets/ # WebSocket handlers
-```
+### **Key Features**
 
-### **Frontend Architecture**
+- ✅ Real-time messaging
+- ✅ Online/Offline status indicator
+- ✅ Friend adding/removing system
+- ✅ Group chats
+- ✅ Profile management
+
+### **Technical Specifications**
+- 🔐 Authentication with JWT
+- ⚡ Real-time communication with Socket.io
+- 📱 Mobile-friendly design
+- 🧪 Test coverage (Jest + Cypress)
+- 📊 Basic monitoring (Prometheus/Grafana)
+
+---
+
+## 🏗️ **Project Structure**
+
 ```
-public/
-├── 🎨 Presentation Layer
-│ ├── css/ # Modular styling
-│ └── images/ # Asset management
-├── ⚡ Client-Side Logic
-│ └──js/
-│ ├── chat.js # Messaging system
-│ ├── router.js # SPA navigation
-│ └── form.js # Form handling
-└── 📱 Multi-Device Support 
-├── Desktop.html # Desktop interface 
-└── Mobile.html # Mobile interface
+RealTalk/
+├── frontend/ # User interface
+│ ├── css/ # Style files
+│ ├── js/ # Client-side JavaScript
+│ └── cypress/ # E2E tests
+│
+└── server/ # Backend API
+├── api/ # Routes and controllers
+├── models/ # Database models
+├── sockets/ # WebSocket handlers
+└── utils/ # Helper functions
 ```
 
 ---
 
-## 🛠️ **Technical Stack**
+## 🚀 **Getting Started**
 
-### **Backend Technologies**
-- **Runtime:** Node.js with Express.js
-- **Real-Time:** Socket.io with custom middleware
-- **Authentication:** JWT with Redis sessions
-- **Database:** Multi-database support (MongoDB, PostgreSQL ready)
-- **Security:** Helmet, CORS, rate limiting
-- **Logging:** Winston logger with file rotation
+### **Requirements**
 
-### **Frontend Technologies**
-- **Core:** Vanilla JavaScript (ES6+)
-- **Styling:** Modular CSS architecture
-- **Routing:** Client-side router (SPA)
-- **Real-Time:** Socket.io client
-- **Build:** npm scripts with optimization
+- Node.js (v18+)
+- MongoDB
+- Redis (optional - for sessions)
 
-### **DevOps & Production**
-- **Environment Management:** Dotenv configuration
-- **Logging:** Comprehensive error tracking
-- **Deployment:** Docker-ready configuration
-- **Monitoring:** Application performance tracking
-
----
-
-## 📡 **API Ecosystem**
-
-### **Authentication Endpoints**
-```http
-POST /api/auth/login # Secure user authentication
-POST /api/auth/register # User registration with validation
-POST /api/auth/refresh # JWT token refresh
-POST /api/auth/logout # Secure session termination
-```
-
-### **Social Features**
-```http
-GET /api/friends # Advanced friend management
-POST /api/friends/request # Friend request system
-GET /api/users/discover # Global user discovery
-```
-
-### **Messaging System**
-```http
-GET /api/chat/conversations # Conversation management
-POST /api/chat/messages # Message sending with validation
-WS /chat # Real-time WebSocket connection
-```
-
-### **Profile Management**
-```http
-GET /api/profile # Comprehensive profile data
-PUT /api/profile # Secure profile updates
-GET /api/profile/stories # Story management
-```
-
----
-
-## 🚀 **Quick Start**
-
-### **Production Deployment**
+### **Installation**
 ```bash
-# Clone and setup
-git clone https://github.com/21Ravan12/RealTalk.git
+# 1. Clone the Repository
+git clone [repo-url]
 cd RealTalk
 
-# Environment configuration
-cp server/.env.example server/.env
-# Configure your database and JWT secrets
-
-# Install & start
+# 2. Backend Installation
+cd server
 npm install
-npm run dev # Development mode
-npm start # Production mode
+cp .env.example .env
+# Edit the .env file
+
+# 3. Frontend Installation
+cd ../frontend
+npm install
+
+# 4. Start MongoDB
+# (Make sure MongoDB is running)
+
+# 5. Run the Application
+# Terminal 1: Backend
+cd server
+npm run dev
+
+# Terminal 2: Frontend
+cd frontend
+npx live-server # or another static server
 ```
 
-### **Docker Deployment**
+---
+
+## 🔧 **Configuration**
+
+### **Environment Variables** (.env)**
+```env
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/realtalk
+JWT_SECRET=your_jwt_secret_key
+NODE_ENV=development
+```
+
+---
+
+## 🧪 **Tests**
+
 ```bash
-docker-compose up -d # Complete production setup
+# Backend tests
+cd server
+npm test
+
+# Frontend E2E tests
+cd frontend
+npx cypress open
 ```
 
 ---
 
-## 🔧 **Advanced Configuration**
+## 📡 **API Endpoints**
 
-### **Database Setup**
+### **Authentication**
+```
+POST /api/auth/register # New user
+POST /api/auth/login # Log in
+POST /api/auth/logout # Log out
+GET /api/auth/me # Existing user
+```
+
+### **Users**
+```
+GET /api/users # All users
+GET /api/users/:id # Specific user
+PUT /api/users/:id # Update profile
+```
+### **Friendship**
+```
+GET /api/friends # Friend list
+POST /api/friends/:id # Friend request
+DELETE /api/friends/:id # Delete friend
+```
+
+### **Chat**
+```
+GET /api/chat/messages # Message history
+GET /api/chat/conversations # Conversations
+POST /api/chat/messages # Send message
+```
+
+---
+
+## 🌐 **WebSocket Events**
 ```javascript
-//Multi-database support
-- MongoDB for real-time data
-- Redis for session management
-- PostgreSQL ready for scaling
+// Connection
+socket.on('connect', () => {})
+socket.on('disconnect', () => {})
+
+// Messaging
+socket.emit('sendMessage', {})
+socket.on('newMessage', (message) => {})
+
+// Status
+socket.on('userOnline', (userId) => {})
+socket.on('userOffline', (userId) => {})
+
+// Typing...
+socket.emit('typing', {})
+socket.on('userTyping', (data) => {})
 ```
 
-### **Security Hardening**
-```javascript
-// Production security features
-- Environment-based configuration
-- Rate limiting per endpoint
-- SQL injection prevention
-- XSS protection middleware
+---
+
+## 🎨 **Frontend**
+
+### **Pages**
+
+- `/` - Login/Authentication
+- `/chat` - Main chat interface
+- `/profile` - Profile management
+
+### **Technologies Used**
+
+- Vanilla JavaScript (ES6+)
+- CSS3 (Flexbox/Grid)
+- HTML5
+- Socket.io Client
+
+---
+
+## 📊 **Monitoring (Optional)**
+
+Simple monitoring with Prometheus + Grafana:
+```bash
+cd server
+docker-compose -f docker-compose.monitoring.yml up
 ```
 
 ---
 
-## 📊 **Performance Features**
+## 🤝 **Contributing**
 
-- **Optimized Real-Time Communication**
-- **Efficient Database Queries**
-- **Modular Code Architecture**
-- **Production-Ready Error Handling**
-- **Comprehensive Logging System**
-
----
-
-## 🌟 **Why RealTalk Stands Out**
-
-### **From Learning Project to Production System**
-This project represents the evolution from a simple chat application to an enterprise-level messaging platform**:
-
-- ✅ **Enterprise Security Standards**
-- ✅ **Scalable Architecture**
-- ✅ **Production Monitoring**
-- ✅ **Professional Documentation**
-- ✅ **Multi-Device Optimization**
+1. Fork
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit (`git commit -m 'Add amazing feature'`)
+4. Push (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ---
 
-## 📞 **Contributions & Support**
+## 📝 **License**
 
-This project is a masterclass in modern web technologies and software architecture. We welcome your contributions!
-
-**Developer:** Ravan Asgarov
-**Portfolio:** [portfolio-omega-five-50.vercel.app](https://portfolio-omega-five-50.vercel.app/)
+MIT License - see LICENSE file for details.
 
 ---
 
-> **RealTalk - Not just a project, but a testament to a professional software development journey.** 🚀
+## 👤 **Author**
+
+**Ravan Asgarov**
+
+- GitHub: [@21Ravan12](https://github.com/21Ravan12)
+- Portfolio: [portfolio-omega-five-50.vercel.app](https://portfolio-omega-five-50.vercel.app/)
+
+---
+
+> **Note:** This project is a real-time messaging application developed for learning purposes. Additional security measures are recommended for production use.
