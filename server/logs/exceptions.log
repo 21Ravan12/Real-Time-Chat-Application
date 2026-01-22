@@ -1,0 +1,302 @@
+2025-08-05 18:15:07 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:15:17 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:15:56 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:18:07 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:19:03 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:25:17 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:27:35 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:46:42 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:50:12 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:50:17 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:54:58 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:56:30 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 18:57:05 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:02:17 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:02:36 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:02:49 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:06:24 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:06:40 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:23:00 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:28:02 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:34:01 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-05 19:38:12 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 22:12:02 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 22:18:40 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 22:25:40 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:1:18
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 22:35:34 [[31merror[39m]: ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:2:16
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:07:14 [[31merror[39m]: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:20:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:07:23 [[31merror[39m]: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/db.config.js:20:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:07:52 [[31merror[39m]: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\Chat-app-v2.2\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/config/jwt.config.js:22:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:10:26 [[31merror[39m]: Error: Route.patch() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as patch] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as patch] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/routes/auth.routes.js:36:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:17:10 [[31merror[39m]: ReferenceError: upload is not defined
+    at <static_initializer> (file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/controllers/user.controller.js:36:35)
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/controllers/user.controller.js:1:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:33:29 [[31merror[39m]: Error: Route.patch() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as patch] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as patch] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/routes/user.routes.js:27:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:35:26 [[31merror[39m]: Error: Route.patch() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as patch] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as patch] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/routes/user.routes.js:42:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:37:08 [[31merror[39m]: Error: Route.get() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as get] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as get] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/routes/chat.routes.js:42:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-08-06 23:37:57 [[31merror[39m]: Error: Route.delete() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as delete] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as delete] (C:\Users\User\..Github\Chat-app-v2.2\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/Chat-app-v2.2/server/api/routes/group.routes.js:44:14
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-10-05 23:36:21 [[31merror[39m]: Error: Route.patch() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as patch] (C:\Users\User\..Github\RealTalk\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as patch] (C:\Users\User\..Github\RealTalk\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/RealTalk/server/api/routes/user.routes.js:27:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-10-05 23:36:39 [[31merror[39m]: Error: Route.patch() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as patch] (C:\Users\User\..Github\RealTalk\server\node_modules\express\lib\router\route.js:216:15)
+    at proto.<computed> [as patch] (C:\Users\User\..Github\RealTalk\server\node_modules\express\lib\router\index.js:521:19)
+    at file:///C:/Users/User/..Github/RealTalk/server/api/routes/user.routes.js:27:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-10-05 23:42:39 [[31merror[39m]: ReferenceError: path is not defined
+    at file:///C:/Users/User/..Github/RealTalk/server/server.js:19:32
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-10-05 23:44:23 [[31merror[39m]: ReferenceError: path is not defined
+    at configureServer (file:///C:/Users/User/..Github/RealTalk/server/config/server.config.js:18:34)
+    at file:///C:/Users/User/..Github/RealTalk/server/server.js:14:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-10-06 00:02:48 [[31merror[39m]: ReferenceError: __dirname is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\RealTalk\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at configureServer (file:///C:/Users/User/..Github/RealTalk/server/config/server.config.js:19:42)
+    at file:///C:/Users/User/..Github/RealTalk/server/server.js:14:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-10-06 00:02:58 [[31merror[39m]: ReferenceError: __dirname is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'C:\Users\User\..Github\RealTalk\server\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at configureServer (file:///C:/Users/User/..Github/RealTalk/server/config/server.config.js:19:42)
+    at file:///C:/Users/User/..Github/RealTalk/server/server.js:14:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2026-01-13 15:31:36 [[31merror[39m]: TypeError: Cannot read properties of undefined (reading 'requestHandler')
+    at file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/api/middlewares/sentry.middleware.js:5:53
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2026-01-14 09:17:07 [[31merror[39m]: TypeError: Cannot read properties of undefined (reading 'requestHandler')
+    at file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/api/middlewares/sentry.middleware.js:5:53
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2026-01-14 09:19:58 [[31merror[39m]: TypeError: Cannot read properties of undefined (reading 'requestHandler')
+    at file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/api/middlewares/sentry.middleware.js:5:53
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2026-01-16 22:24:54 [[31merror[39m]: TypeError: Cannot read properties of undefined (reading 'labels')
+    at ServerResponse.<anonymous> (file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/api/middlewares/metrics.middleware.js:28:8)
+    at C:\Users\User\..Github\Real-Time-Chat-Application(performance-tests)\server\node_modules\@opentelemetry\context-async-hooks\build\src\AbstractAsyncHooksContextManager.js:46:55
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at SentryContextManager.with (C:\Users\User\..Github\Real-Time-Chat-Application(performance-tests)\server\node_modules\@opentelemetry\context-async-hooks\build\src\AsyncLocalStorageContextManager.js:33:40)
+    at SentryContextManager.with (file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/node_modules/@sentry/opentelemetry/build/esm/index.js:1462:24)
+    at ServerResponse.contextWrapper (C:\Users\User\..Github\Real-Time-Chat-Application(performance-tests)\server\node_modules\@opentelemetry\context-async-hooks\build\src\AbstractAsyncHooksContextManager.js:46:32)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1077:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)
+2026-01-18 23:10:11 [[31merror[39m]: TypeError: Cannot read properties of undefined (reading 'labels')
+    at ServerResponse.<anonymous> (file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/api/middlewares/metrics.middleware.js:28:8)
+    at C:\Users\User\..Github\Real-Time-Chat-Application(performance-tests)\server\node_modules\@opentelemetry\context-async-hooks\build\src\AbstractAsyncHooksContextManager.js:46:55
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at SentryContextManager.with (C:\Users\User\..Github\Real-Time-Chat-Application(performance-tests)\server\node_modules\@opentelemetry\context-async-hooks\build\src\AsyncLocalStorageContextManager.js:33:40)
+    at SentryContextManager.with (file:///C:/Users/User/..Github/Real-Time-Chat-Application(performance-tests)/server/node_modules/@sentry/opentelemetry/build/esm/index.js:1462:24)
+    at ServerResponse.contextWrapper (C:\Users\User\..Github\Real-Time-Chat-Application(performance-tests)\server\node_modules\@opentelemetry\context-async-hooks\build\src\AbstractAsyncHooksContextManager.js:46:32)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1077:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)
+2026-01-18 23:16:53 [[31merror[39m]: TypeError: Cannot read properties of undefined (reading 'labels')
+    at ServerResponse.<anonymous> (file:///C:/Users/User/..Github/Real-Time-Chat-Application/server/api/middlewares/metrics.middleware.js:28:8)
+    at C:\Users\User\..Github\Real-Time-Chat-Application\server\node_modules\@opentelemetry\context-async-hooks\build\src\AbstractAsyncHooksContextManager.js:46:55
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at SentryContextManager.with (C:\Users\User\..Github\Real-Time-Chat-Application\server\node_modules\@opentelemetry\context-async-hooks\build\src\AsyncLocalStorageContextManager.js:33:40)
+    at SentryContextManager.with (file:///C:/Users/User/..Github/Real-Time-Chat-Application/server/node_modules/@sentry/opentelemetry/build/esm/index.js:1462:24)
+    at ServerResponse.contextWrapper (C:\Users\User\..Github\Real-Time-Chat-Application\server\node_modules\@opentelemetry\context-async-hooks\build\src\AbstractAsyncHooksContextManager.js:46:32)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1077:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)

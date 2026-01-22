@@ -1,0 +1,21 @@
+{
+  "name": "realtalk-frontend",
+  "version": "1.0.0",
+  "description": "RealTalk Chat Application Frontend",
+  "scripts": {
+    "dev": "serve . -p 8000",
+    "test:e2e": "start-server-and-test dev http://localhost:8000 cypress:run",
+    "test:e2e:open": "start-server-and-test dev http://localhost:8000 cypress:open",
+    "cypress:run": "cypress run --browser electron",
+    "cypress:open": "cypress open --browser electron"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^9.3.4",
+    "@testing-library/user-event": "^14.5.2",
+    "cypress": "^13.0.0",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "serve": "^14.2.5",
+    "start-server-and-test": "^2.1.3"
+  }
+}

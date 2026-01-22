@@ -1,0 +1,17 @@
+.Landing-page {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(135deg, #181818 60%, #23272f 100%);
+}
+
+.main-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
+    flex-grow: 1;
+    background: transparent;
+}

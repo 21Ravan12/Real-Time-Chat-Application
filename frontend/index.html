@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosyal Medya Platformu - Ana Sayfa</title>
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTQiIGZpbGw9IiM0Mjg1RjQiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxMiIgcj0iNCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE2IDI0QzE5IDI0IDIyIDIyIDIyIDE4SDEwQzEwIDIyIDEzIDI0IDE2IDI0WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" type="image/svg+xml">    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/socket.js" defer></script>
+    <link id="account" rel="stylesheet" href="css/pages/account/styles.css"></link>
+    <link id="landing-general-styles" rel="stylesheet" href="css/pages/landing/general-styles.css"></link>
+    <link id="landing-left-container" rel="stylesheet" href="css/pages/landing/left-container.css"></link>
+    <link id="landing-chat-container" rel="stylesheet" href="css/pages/landing/chat-container.css"></link>
+    <link id="auth" rel="stylesheet" href="css/pages/auth/styles.css"></link>
+    <link id="main" rel="stylesheet" href="css/pages/main/styles.css"></link>
+</head>
+<body>
+
+<div class="main-page">
+    <header class="main-navbar">
+        <div class="platform-logo">
+            <h1>RealTalk</h1>
+        </div>
+        <nav class="navigation-links">
+            <a href="#about-section">About</a>
+            <a href="#features-section">Enterprise Features</a>
+            <a href="#architecture-section">Architecture</a>
+            <a href="#signup-section">Get Started</a>
+            <a onclick="navigateTo('login-page')" class="login-button">Enterprise Login</a>
+        </nav>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h2>Enterprise-Grade Messaging Platform</h2>
+            <p>Next Evolution of Social Communication - Production-ready enterprise messaging with advanced security and real-time capabilities</p>
+            <a href="#signup-section" class="primary-cta-button">Deploy Now</a>
+        </div>
+    </section>
+
+    <section id="about-section" class="about-platform">
+        <h2>About RealTalk</h2>
+        <p>RealTalk is a production-ready enterprise messaging solution that evolved from Social Media Platform v2. Featuring JWT authentication, Redis session management, and multi-database support for scalable, secure communication.</p>
+    </section>
+
+    <section id="features-section" class="platform-features">
+        <h2>Enterprise Features</h2>
+        <div class="feature-list">
+            <div class="feature-item security-feature">
+                <h3>🔐 Advanced Security System</h3>
+                <p>Role-based access control, Socket.io authentication middleware, input validation & sanitization, Redis session management</p>
+            </div>
+            <div class="feature-item realtime-feature">
+                <h3>💬 Real-Time Communication</h3>
+                <p>WebSocket implementation with online/offline status tracking, typing indicators, and message delivery receipts</p>
+            </div>
+            <div class="feature-item multi-platform-feature">
+                <h3>📱 Multi-Platform Support</h3>
+                <p>Desktop-optimized interface, mobile-first responsive design, and Progressive Web App (PWA) ready</p>
+            </div>
+            <div class="feature-item social-feature">
+                <h3>👥 Enhanced Social Integration</h3>
+                <p>Advanced friend management system with group management and global user discovery</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture-section" class="system-architecture">
+        <h2>System Architecture</h2>
+        <div class="architecture-grid">
+            <div class="arch-layer">
+                <h3>🏗️ Backend Microservices</h3>
+                <ul>
+                    <li>🛡️ Security Layer (JWT, validation, socketAuth)</li>
+                    <li>💼 Business Logic (controllers & services)</li>
+                    <li>📊 Data Management (multi-database setup)</li>
+                    <li>🔌 Real-Time Layer (WebSocket handlers)</li>
+                </ul>
+            </div>
+            <div class="arch-layer">
+                <h3>🎨 Frontend Architecture</h3>
+                <ul>
+                    <li>📱 Multi-Device Support (Desktop & Mobile)</li>
+                    <li>⚡ Client-Side Logic (SPA navigation)</li>
+                    <li>🔧 Modular CSS Architecture</li>
+                    <li>🌐 Socket.io Client Integration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <h2>Technical Stack</h2>
+        <div class="stack-grid">
+            <div class="backend-stack">
+                <h3>Backend Technologies</h3>
+                <p>Node.js • Express.js • Socket.io • JWT • Redis • MongoDB • PostgreSQL • Helmet • CORS</p>
+            </div>
+            <div class="frontend-stack">
+                <h3>Frontend Technologies</h3>
+                <p>Vanilla JavaScript (ES6+) • Modular CSS • Client-side Router • Socket.io Client</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup-section" class="signup-call-to-action">
+        <h2>Ready for Production?</h2>
+        <p>Deploy RealTalk with Docker or traditional setup. Enterprise-grade messaging at your fingertips.</p>
+        <div class="cta-buttons">
+            <a onclick="navigateTo('sign-up-page')" class="primary-cta-button">Quick Deployment</a>
+            <a href="#documentation" class="secondary-cta-button">View Documentation</a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 RealTalk Enterprise - From Learning Project to Production System</p>
+        <p class="developer-credit">Developed by Ravan Asgarov | Professional Software Architecture</p>
+    </footer>
+</div>
+
+<div class="login-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Log in</h1>
+        <h2 class="error-message login-form-error"></h2>
+        <div class="registration-form">
+            <form id="login-form">
+                <input type="email" id="login-email" name="login-email" class="input-field" placeholder="Email" required><br>
+                <input type="password" id="login-password" name="login-password" class="input-field" placeholder="Password" required><br>
+                <button type="submit" class="submit-button">Log in</button>
+                <a onclick="navigateTo('forget-password-page')" class="form-link secret-section">Forget your password?</a>
+                <a onclick="navigateTo('sign-up-page')" class="form-link">Or, sign up</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sign-up-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Sign up</h1>
+        <div class="registration-form">
+            <h2 class="success-message"></h2>
+            <form id="sign-up-form">
+                <input type="text" id="name" name="name" class="input-field" placeholder="Username" required><br>
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
+                <input type="text" id="bio" name="bio" class="input-field" placeholder="Bio" required><br>
+                <button type="submit" class="submit-button">Sign up</button>
+                <a onclick="navigateTo('login-page')" class="form-link">Or, log in</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="forget-password-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Account</h1>
+        <h2 class="error-message forget-password-error"></h2>
+        <div class="registration-form">
+            <form id="forget-password-form">
+                <input type="email" id="forget-email" name="forget-email" class="input-field" placeholder="Email" required><br>
+                <button type="submit" class="submit-button">Send code</button>
+                <a onclick="navigateTo('login-page')" class="form-link">Or, Log in</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="forget-code-insert-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Insert the code</h1>
+        <div class="registration-form">
+            <h2 class="error-message forget-code-page-error"></h2>
+            <form id="forget-code-form">
+                <input type="text" id="forget-code" name="forget-code" class="input-field" placeholder="Code" required><br>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="refresh-password-page">
+    <div class="registration-container">
+      <h1 class="registration-header">Insert the code</h1>
+      <div class="registration-form">
+        <h2 class="error-message refresh-password-error"></h2>
+        <form id="refresh-password-form">
+          <!-- Yeni şifre -->
+          <input type="password" id="new-password" name="new-password" class="input-field" placeholder="New Password" required><br>
+  
+          <!-- Yeni şifre tekrar -->
+          <input type="password" id="confirm-new-password" name="confirm-new-password" class="input-field" placeholder="Confirm New Password" required><br>
+  
+          <button type="submit" class="submit-button">Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
+  
+<div class="code-insert-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Insert the code</h1>
+        <div class="registration-form">
+            <h2 class="error-message insert-page-error"></h2>
+            <form id="enter-code-form">
+                <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="Landing-page">
+    <div class="main-container">
+        <div class="left-container">        
+            <div class="top-component-top">
+                <button class="add-thing-btn" onclick="toggleAddUser()">Add Friend</button>
+                <button class="add-thing-btn" onclick="toggleAddGroup()">Create Group</button>
+            </div>
+            <div class="top-component-lower">
+                <!-- Add Friend Section -->
+                <div class="add-thing-container" id="add-friend-container">
+                    <form id="addFriendForm">
+                        <input placeholder="Enter user emal..." type="text" id="friend" name="friend">
+                        <button class="add-thing-down-btn" type="submit">Add</button>
+                    </form>
+                </div> 
+                        
+                <!-- Create Group Section -->
+                <div class="add-thing-container" id="add-group-container" style="display:none;">
+                    <form id="addGroupForm">
+                        <!-- Group Name -->
+                        <input 
+                            placeholder="Enter group name..." 
+                            type="text" 
+                            id="groupName" 
+                            name="groupName"
+                            required
+                        >
+                
+                        <!-- Group Description -->
+                        <textarea 
+                            placeholder="Enter group description..." 
+                            id="groupDescription" 
+                            name="groupDescription"
+                            rows="3"
+                        ></textarea>
+                
+                        <!-- Submit Button -->
+                        <button class="add-thing-down-btn" type="submit">Create</button>
+                    </form>
+                </div>
+
+                <div class="profile-btn">
+                    <img alt="Profile Picture" id="profileImage" onclick="navigateTo('account-container')">
+                </div>
+                <button class="settings-btn">
+                    <i class="fas fa-cog"></i> 
+                </button>
+            </div>
+        
+            <div class="lower-component" id="lower-component"></div>
+        </div>
+        
+        <div class="chat-container" id="chat-container">  
+            <button class="toggle-btn" onclick="toggleLeftContainer()">
+                <i class="fas fa-arrow-right"></i> 
+            </button>            
+            <!-- Upper section for user/group info -->
+            <div class="chat-header" id="chat-header">
+                <div class="chat-user-info">
+                    <img id="chat-user-avatar" src="" alt="Profilsettingse" class="user-avatar">
+                    <div class="chat-user-details">
+                        <h3 id="chat-user-name">Select a chat</h3>
+                        <span id="chat-user-status" class="user-status">Click on a friend or group to start chatting</span>
+
+                        <span id="typing-indicator" class="typing-indicator" style="display: none;">
+                            <span class="typing-word" aria-hidden="true">
+                                <span class="typing-letter">t</span>
+                                <span class="typing-letter">y</span>
+                                <span class="typing-letter">p</span>
+                                <span class="typing-letter">i</span>
+                                <span class="typing-letter">n</span>
+                                <span class="typing-letter">g</span>
+                            </span>
+
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="chat-action-btn" title="More options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Chat messages section -->                     
+            <div class="chat-box" id="chat-box"></div>
+                <div class="input-container">
+                    <input type="text" id="message-input" placeholder="Type your message...">
+                    <button onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> <!-- Paper plane icon for send -->
+                    </button>
+                </div>
+        </div>
+    </div>
+
+    <!-- Friend Detail Section -->
+    <div class="detail-section friend-detail" id="friend-detail">
+        <div class="detail-header">
+            <h2>Friend Details</h2>
+            <button class="close-detail" onclick="closeDetail()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="detail-content">
+            <img class="detail-avatar" id="friend-detail-avatar">
+            <div class="detail-name" id="friend-detail-name">John Doe</div>
+            <div class="detail-info" id="friend-detail-status">Online</div>
+            
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+                <p><strong>Email:</strong> john.doe@example.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>Location:</strong> New York, USA</p>
+            </div>
+                        
+            <h3>Shared Groups</h3>
+            <ul class="member-list">
+                <li class="member-item">
+                    <div class="member-avatar">WD</div>
+                    <div class="member-info">
+                        <div class="member-name">Web Developers</div>
+                        <div class="member-role">Member</div>
+                    </div>
+                </li>
+                <li class="member-item">
+                    <div class="member-avatar">GD</div>
+                    <div class="member-info">
+                        <div class="member-name">Game Designers</div>
+                        <div class="member-role">Member</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Group Detail Section -->
+    <div class="detail-section group-detail" id="group-detail">
+        <div class="detail-header">
+            <h2>Group Details</h2>
+            <button class="close-detail" onclick="closeDetail()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="detail-content">
+            <div class="detail-avatar" id="group-detail-avatar">WD</div>
+            <div class="detail-name" id="group-detail-name">Web Developers</div>
+            <div class="detail-info" id="group-detail-members">12 members</div>
+            
+            <h3>Description</h3>
+            <p>A community for web developers to share knowledge, resources, and collaborate on projects.</p>
+            
+            <h3>Members</h3>
+            <ul class="member-list">
+                <li class="member-item">
+                    <div class="member-avatar">JD</div>
+                    <div class="member-info">
+                        <div class="member-name">John Doe</div>
+                        <div class="member-role">Admin</div>
+                    </div>
+                </li>
+                <li class="member-item">
+                    <div class="member-avatar">AS</div>
+                    <div class="member-info">
+                        <div class="member-name">Alice Smith</div>
+                        <div class="member-role">Member</div>
+                    </div>
+                </li>
+                <li class="member-item">
+                    <div class="member-avatar">BJ</div>
+                    <div class="member-info">
+                        <div class="member-name">Bob Johnson</div>
+                        <div class="member-role">Member</div>
+                    </div>
+                </li>
+            </ul>
+                        
+            <!-- Add Member Section -->
+            <div class="add-member-container">
+                <form id="addMemberForm">
+                    <input 
+                        type="text" 
+                        id="newMemberEmail" 
+                        name="newMemberEmail" 
+                        placeholder="Enter member name..." 
+                        required
+                    >
+                    <select id="newMemberRole" name="newMemberRole">
+                        <option value="member">Member</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button type="submit">Add Member</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="account-container">
+    <div class="profile-wrapper">
+        <div class="profile-card">
+            <div class="profile-header">
+                <img id="profileImageAccount" class="profile-image" alt="Profile Image">
+                <h1 id="nameAccount" class="profile-name">John Doe</h1>
+            </div>
+
+            <div class="profile-details">
+                <div class="profile-detail bio-section">
+                    <h3>Email</h3>
+                    <p id="emailAccount" class="profile-email">johndoe@example.com</p>
+                </div>
+                <div class="profile-detail bio-section">
+                    <h3>Bio</h3>
+                    <p id="bioAccount">A passionate developer who loves coding and coffee.</p>
+                </div>
+            </div>
+
+            <button class="profile-edit-button" id="editProfileButton">Edit Profile</button>
+        </div>
+    </div>
+
+    <div class="profile-modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Your Profile</h2>
+            <label for="updateName">Name:</label>
+            <input id="updateName" type="text" placeholder="Enter your name">
+    
+            <label for="updateBio">Bio:</label>
+            <textarea id="updateBio" placeholder="Tell something about yourself"></textarea>
+    
+            <input type="file" id="updateImage" accept="image/*">
+            <input type="hidden" id="profileImageBase64">
+            <img id="profileImagePreview" src="" alt="Image Preview" class="image-preview">
+
+            <div class="modal-buttons">
+                <button id="saveChangesButton" class="save-button">Save Changes</button>
+                <button id="closeModalButton" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/rooter.js"></script>
+<script src="js/pages/auth/forms.js"></script>
+<script src="js/pages/account/index.js"></script>
+<script src="js/pages/landing/index.js"></script>
+</body>
+</html>
