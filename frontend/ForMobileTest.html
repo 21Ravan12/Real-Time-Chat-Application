@@ -101,10 +101,10 @@ function joinChat() {
       console.error('Connection error:', error.message);
       if (error.message.includes('Authentication')) {
         console.log('Please log in again');
-        // Token expired veya invalid ise login sayfasına yönlendir
+
         sessionStorage.removeItem('profileData');
         sessionStorage.removeItem('jwt');
-        window.location.href = '/login';
+        navigateTo('login-page');
       }
     });
 
@@ -119,7 +119,7 @@ function joinChat() {
 
   } else {
     console.log("Token is missing. Please log in first.");
-    window.location.href = '/login';
+    navigateTo('login-page');
   }
 }
 
@@ -1209,7 +1209,11 @@ body {
         max-height: calc(100vh - 70px);
         padding: 10px 2vw 10px 2vw;
     }
-}        
+}   
+
+#add-group-container {
+    display: none;
+}
     </style>
     <style id="landing-chat-container" rel="stylesheet">
 .chat-container {
@@ -1649,7 +1653,10 @@ body {
         width: 4px;
         height: 4px;
     }
-}     
+}   
+#typing-indicator {
+    display: none;
+}  
     </style>
     <style id="auth" rel="stylesheet">
 .login-page,
@@ -2542,7 +2549,7 @@ body {
                 </div> 
                         
                 <!-- Create Group Section -->
-                <div class="add-thing-container" id="add-group-container" style="display:none;">
+                <div class="add-thing-container" id="add-group-container">
                     <form id="addGroupForm">
                         <!-- Group Name -->
                         <input 
@@ -2589,7 +2596,7 @@ body {
                         <h3 id="chat-user-name">Select a chat</h3>
                         <span id="chat-user-status" class="user-status">Click on a friend or group to start chatting</span>
 
-                        <span id="typing-indicator" class="typing-indicator" style="display: none;">
+                        <span id="typing-indicator" class="typing-indicator">
                             <span class="typing-word" aria-hidden="true">
                                 <span class="typing-letter">t</span>
                                 <span class="typing-letter">y</span>

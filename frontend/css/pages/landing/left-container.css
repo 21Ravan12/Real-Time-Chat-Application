@@ -529,3 +529,7 @@
         padding: 10px 2vw 10px 2vw;
     }
 }
+
+#add-group-container {
+    display: none;
+}

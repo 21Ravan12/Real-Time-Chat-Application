@@ -229,7 +229,7 @@
                 </div> 
                         
                 <!-- Create Group Section -->
-                <div class="add-thing-container" id="add-group-container" style="display:none;">
+                <div class="add-thing-container" id="add-group-container">
                     <form id="addGroupForm">
                         <!-- Group Name -->
                         <input 
@@ -256,7 +256,7 @@
                 <div class="profile-btn">
                     <img alt="Profile Picture" id="profileImage" onclick="navigateTo('account-container')">
                 </div>
-                <button class="settings-btn">
+                <button class="settings-btn" aria-label="Open settings">
                     <i class="fas fa-cog"></i> 
                 </button>
             </div>
@@ -265,7 +265,7 @@
         </div>
         
         <div class="chat-container" id="chat-container">  
-            <button class="toggle-btn" onclick="toggleLeftContainer()">
+            <button class="toggle-btn" onclick="toggleLeftContainer()" aria-label="Toggle sidebar">
                 <i class="fas fa-arrow-right"></i> 
             </button>            
             <!-- Upper section for user/group info -->
@@ -276,7 +276,7 @@
                         <h3 id="chat-user-name">Select a chat</h3>
                         <span id="chat-user-status" class="user-status">Click on a friend or group to start chatting</span>
 
-                        <span id="typing-indicator" class="typing-indicator" style="display: none;">
+                        <span id="typing-indicator" class="typing-indicator">
                             <span class="typing-word" aria-hidden="true">
                                 <span class="typing-letter">t</span>
                                 <span class="typing-letter">y</span>
@@ -298,8 +298,8 @@
             <div class="chat-box" id="chat-box"></div>
                 <div class="input-container">
                     <input type="text" id="message-input" placeholder="Type your message...">
-                    <button onclick="sendMessage()">
-                        <i class="fas fa-paper-plane"></i> <!-- Paper plane icon for send -->
+                    <button class="toggle-btn" onclick="toggleLeftContainer()" aria-label="Toggle sidebar">
+                        <i class="fas fa-arrow-right"></i> 
                     </button>
                 </div>
         </div>
@@ -309,12 +309,12 @@
     <div class="detail-section friend-detail" id="friend-detail">
         <div class="detail-header">
             <h2>Friend Details</h2>
-            <button class="close-detail" onclick="closeDetail()">
-                <i class="fas fa-times"></i>
+            <button class="chat-action-btn" title="More options" aria-label="More options">
+                <i class="fas fa-ellipsis-v"></i>
             </button>
         </div>
         <div class="detail-content">
-            <img class="detail-avatar" id="friend-detail-avatar">
+            <img class="detail-avatar" id="friend-detail-avatar" alt="Friend Avatar">
             <div class="detail-name" id="friend-detail-name">John Doe</div>
             <div class="detail-info" id="friend-detail-status">Online</div>
             
@@ -349,7 +349,7 @@
     <div class="detail-section group-detail" id="group-detail">
         <div class="detail-header">
             <h2>Group Details</h2>
-            <button class="close-detail" onclick="closeDetail()">
+            <button class="close-detail" onclick="closeDetail()" aria-label="Close details">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -396,7 +396,8 @@
                         placeholder="Enter member name..." 
                         required
                     >
-                    <select id="newMemberRole" name="newMemberRole">
+                    <label for="newMemberRole" class="visually-hidden">Select member role</label>
+                    <select id="newMemberRole" name="newMemberRole" aria-label="Select member role">
                         <option value="member">Member</option>
                         <option value="admin">Admin</option>
                     </select>
@@ -439,6 +440,7 @@
             <label for="updateBio">Bio:</label>
             <textarea id="updateBio" placeholder="Tell something about yourself"></textarea>
     
+            <label for="updateImage">Profile Image:</label>
             <input type="file" id="updateImage" accept="image/*">
             <input type="hidden" id="profileImageBase64">
             <img id="profileImagePreview" src="" alt="Image Preview" class="image-preview">

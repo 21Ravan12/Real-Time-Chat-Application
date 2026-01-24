@@ -91,10 +91,9 @@ function joinChat() {
       console.error('Connection error:', error.message);
       if (error.message.includes('Authentication')) {
         console.log('Please log in again');
-        // Token expired veya invalid ise login sayfasına yönlendir
         sessionStorage.removeItem('profileData');
         sessionStorage.removeItem('jwt');
-        window.location.href = '/login';
+        navigateTo('login-page');
       }
     });
 
@@ -109,7 +108,7 @@ function joinChat() {
 
   } else {
     console.log("Token is missing. Please log in first.");
-    window.location.href = '/login';
+    navigateTo('login-page');
   }
 }
 
