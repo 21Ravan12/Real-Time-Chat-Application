@@ -533,3 +533,49 @@
 #add-group-container {
     display: none;
 }
+
+
+
+
+.friend-requests-header, .friends-header {
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.friend-requests-header {
+    margin-top: 0;
+    color: #4CAF50; 
+}
+
+.friend-request {
+    background-color: #f9f9f9; 
+    border-left: 3px solid #4CAF50; 
+}
+
+.friend-request-actions {
+    display: flex;
+    margin-left: auto;
+    gap: 5px;
+}
+
+.request-accept, .request-reject {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.request-accept {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.request-reject {
+    background-color: #f44336;
+    color: white;
+}

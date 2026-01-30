@@ -78,6 +78,14 @@ async function fetchChatData(Allow) {
             }
         });
 
+        const responseFriendsRequests = await fetch(`http://localhost:5000/api/v1/friends/requests`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
         const responseGroups = await fetch(`http://localhost:5000/api/v1/groups`, {
             method: 'GET',
             headers: {
@@ -87,16 +95,18 @@ async function fetchChatData(Allow) {
         });
 
 
-        if (!responseFriends.ok && !responseGroups.ok) {
+        if (!responseFriends.ok && !responseGroups.ok && !responseFriendsRequests.ok) {
             throw new Error('Network response was not ok');
         }
 
         const friendsData = await responseFriends.json();
         const groupsData = await responseGroups.json();
+        const friendsRequestsData = await responseFriendsRequests.json();
 
         const data = {
             friends: friendsData.data || [],
-            groups: groupsData.data || []
+            groups: groupsData.data || [],
+            friendsRequests: friendsRequestsData.data || []
         };
         sessionStorage.setItem('chatData', JSON.stringify(data));
         await joinGroupsToSockets(data.groups);
@@ -112,7 +122,86 @@ async function fetchChatData(Allow) {
 
 async function updateLeftContainer(data) {
     console.log('Updating friends list with data:', data);
-    if (data.friends) {
+if (data.friendsRequests && data.friendsRequests.length > 0) {
+    console.log('Adding friend requests to the list.');
+
+    const user_list = document.querySelector('.lower-component');
+    if (user_list) {
+        const requestsHeader = document.createElement('div');
+        requestsHeader.className = 'friend-requests-header';
+        requestsHeader.textContent = 'Friend Requests';
+        user_list.appendChild(requestsHeader);
+        
+        let count = data.friendsRequests.length;
+        for (let index = 0; index < count; index++) {
+            const friendRequest = data.friendsRequests[index];
+            const user = friendRequest.user; 
+            
+            const requestDiv = document.createElement('div');
+            requestDiv.setAttribute('_id', user._id); 
+            requestDiv.className = 'user friend-request';
+            requestDiv.id = `friend-request-${user._id}`;
+            
+            const profileImageDiv = document.createElement('div');
+            profileImageDiv.className = 'friend-profile-image';
+            
+            const defaultProfilePlaceholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2RkZCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjOTk5Ii8+PHBhdGggZD0iTTMwIDcwIFEgMzAgNTAgNTAgNjAgUSA3MCA1MCA3MCA3MCBRIDUwIDgwIDMwIDcwIiBmaWxsPSIjOTk5Ii8+PC9zdmc+';
+            profileImageDiv.style.backgroundImage = `url(${defaultProfilePlaceholder})`;
+            
+            if (user.avatar) { 
+                const img = new Image();
+                const imageUrl = user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`;
+                img.onload = function() {
+                    profileImageDiv.style.backgroundImage = `url(${imageUrl})`;
+                };
+                img.onerror = function() {
+                    console.log('Profile picture could not be uploaded:', user.avatar);
+                };
+                img.src = imageUrl;
+            }
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.textContent = user.username || user.email; 
+            nameDiv.setAttribute('_id', user._id);
+            nameDiv.className = 'friend-name friend-request';
+            
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'friend-request-actions';
+            
+            const acceptBtn = document.createElement('button');
+            acceptBtn.textContent = '✓';
+            acceptBtn.className = 'request-accept';
+            acceptBtn.onclick = function(e) {
+                e.stopPropagation();
+                acceptFriendRequest(friendRequest._id); 
+            };
+            
+            const rejectBtn = document.createElement('button');
+            rejectBtn.textContent = '✗';
+            rejectBtn.className = 'request-reject';
+            rejectBtn.onclick = function(e) {
+                e.stopPropagation();
+                rejectFriendRequest(friendRequest._id); 
+            };
+            
+            actionsDiv.appendChild(acceptBtn);
+            actionsDiv.appendChild(rejectBtn);
+            
+            requestDiv.appendChild(profileImageDiv);
+            requestDiv.appendChild(nameDiv);
+            requestDiv.appendChild(actionsDiv);
+            
+            user_list.appendChild(requestDiv);
+        }
+        
+        const friendsHeader = document.createElement('div');
+        friendsHeader.className = 'friends-header';
+        friendsHeader.textContent = 'Friends';
+        user_list.appendChild(friendsHeader);
+    }
+}
+
+    if (data.friends && data.friends.length > 0) {
         const user_list = document.querySelector('.lower-component');
         if (!user_list) {
             console.error('User list element not found.');
@@ -220,7 +309,7 @@ async function updateLeftContainer(data) {
     } else {
         console.error('No friends data found.');
     }
-    if (data.groups) {
+    if (data.groups && data.groups.length > 0) {
         const user_list = document.querySelector('.lower-component');
         if (!user_list) {
             console.error('User list element not found.');
@@ -346,6 +435,54 @@ function addFriend(event) {
             fetchChatData(false);
         } else {
             alert("Failed to add friend");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred: " + error.message);
+    });
+}
+
+function acceptFriendRequest(requestId) {
+    const token = sessionStorage.getItem('jwt');
+    fetch(`http://localhost:5000/api/v1/friends/${encodeURIComponent(requestId)}/accept`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Accept friend request response:", data);
+        if (data.message === "Friend request accepted successfully!") {
+            fetchChatData(false);
+        } else {
+            alert("Failed to accept friend request");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred: " + error.message);
+    });
+}
+
+function rejectFriendRequest(requestId) {
+    const token = sessionStorage.getItem('jwt');
+    fetch(`http://localhost:5000/api/v1/friends/${encodeURIComponent(requestId)}/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Reject friend request response:", data);
+        if (data.message === "Friend request rejected successfully!") {
+            fetchChatData(false);
+        } else {
+            alert("Failed to reject friend request");
         }
     })
     .catch(error => {
