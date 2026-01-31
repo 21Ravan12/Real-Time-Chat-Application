@@ -58,7 +58,8 @@ export default class FriendService {
         return {
           _id: request._id,
           type: isIncoming ? 'incoming' : 'outgoing',
-          user: isIncoming ? request.user : request.friend,
+          sender: request.user,
+          receiver: request.friend,
           status: request.status,
           createdAt: request.createdAt
         };
@@ -93,6 +94,8 @@ export default class FriendService {
           throw new AppError('Friend request already exists', HTTP_STATUS.CONFLICT);
         } else if (existingRequest.status === FRIEND_STATUS.ACCEPTED) {
           throw new AppError('You are already friends', HTTP_STATUS.CONFLICT);
+        } else if (existingRequest.status === FRIEND_STATUS.REJECTED) {
+          throw new AppError('Friend request was previously rejected', HTTP_STATUS.CONFLICT);
         }
       }
 

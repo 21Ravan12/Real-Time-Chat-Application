@@ -122,94 +122,89 @@ async function fetchChatData(Allow) {
 
 async function updateLeftContainer(data) {
     console.log('Updating friends list with data:', data);
-if (data.friendsRequests && data.friendsRequests.length > 0) {
-    console.log('Adding friend requests to the list.');
-
     const user_list = document.querySelector('.lower-component');
     if (user_list) {
-        const requestsHeader = document.createElement('div');
-        requestsHeader.className = 'friend-requests-header';
-        requestsHeader.textContent = 'Friend Requests';
-        user_list.appendChild(requestsHeader);
-        
-        let count = data.friendsRequests.length;
-        for (let index = 0; index < count; index++) {
-            const friendRequest = data.friendsRequests[index];
-            const user = friendRequest.user; 
+        user_list.innerHTML = '';
+    }
+
+    if (data.friendsRequests && data.friendsRequests.length > 0) {
+        console.log('Adding friend requests to the list.');
+    
+        const user_list = document.querySelector('.lower-component');
+    
+        if (user_list) {
             
-            const requestDiv = document.createElement('div');
-            requestDiv.setAttribute('_id', user._id); 
-            requestDiv.className = 'user friend-request';
-            requestDiv.id = `friend-request-${user._id}`;
-            
-            const profileImageDiv = document.createElement('div');
-            profileImageDiv.className = 'friend-profile-image';
-            
-            const defaultProfilePlaceholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2RkZCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjOTk5Ii8+PHBhdGggZD0iTTMwIDcwIFEgMzAgNTAgNTAgNjAgUSA3MCA1MCA3MCA3MCBRIDUwIDgwIDMwIDcwIiBmaWxsPSIjOTk5Ii8+PC9zdmc+';
-            profileImageDiv.style.backgroundImage = `url(${defaultProfilePlaceholder})`;
-            
-            if (user.avatar) { 
-                const img = new Image();
-                const imageUrl = user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`;
-                img.onload = function() {
-                    profileImageDiv.style.backgroundImage = `url(${imageUrl})`;
+            let count = data.friendsRequests.length;
+            for (let index = 0; index < count; index++) {
+                console.log('Processing friend request:', index);
+                const friendRequest = data.friendsRequests[index];
+                const user = friendRequest.sender._id === sessionStorage.getItem('_id') ? friendRequest.receiver : friendRequest.sender; 
+                
+                const requestDiv = document.createElement('div');
+                requestDiv.setAttribute('_id', user._id); 
+                requestDiv.className = 'user friend-request';
+                requestDiv.id = `friend-request-${user._id}`;
+                
+                const profileImageDiv = document.createElement('div');
+                profileImageDiv.className = 'friend-profile-image';
+                
+                const defaultProfilePlaceholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2RkZCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjOTk5Ii8+PHBhdGggZD0iTTMwIDcwIFEgMzAgNTAgNTAgNjAgUSA3MCA1MCA3MCA3MCBRIDUwIDgwIDMwIDcwIiBmaWxsPSIjOTk5Ii8+PC9zdmc+';
+                profileImageDiv.style.backgroundImage = `url(${defaultProfilePlaceholder})`;
+                
+                if (user.avatar) { 
+                    const img = new Image();
+                    const imageUrl = user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`;
+                    img.onload = function() {
+                        profileImageDiv.style.backgroundImage = `url(${imageUrl})`;
+                    };
+                    img.onerror = function() {
+                        console.log('Profile picture could not be uploaded:', user.avatar);
+                    };
+                    img.src = imageUrl;
+                }
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.textContent = user.username || user.email; 
+                nameDiv.setAttribute('_id', user._id);
+                nameDiv.className = 'friend-name friend-request';
+                
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'friend-request-actions';
+                
+                const acceptBtn = document.createElement('button');
+                acceptBtn.textContent = '✓';
+                acceptBtn.className = 'request-accept';
+                acceptBtn.onclick = function(e) {
+                    e.stopPropagation();
+                    acceptFriendRequest(friendRequest._id); 
                 };
-                img.onerror = function() {
-                    console.log('Profile picture could not be uploaded:', user.avatar);
+                
+                const rejectBtn = document.createElement('button');
+                rejectBtn.textContent = '✗';
+                rejectBtn.className = 'request-reject';
+                rejectBtn.onclick = function(e) {
+                    e.stopPropagation();
+                    rejectFriendRequest(friendRequest._id); 
                 };
-                img.src = imageUrl;
+                
+                actionsDiv.appendChild(acceptBtn);
+                actionsDiv.appendChild(rejectBtn);
+                
+                requestDiv.appendChild(profileImageDiv);
+                requestDiv.appendChild(nameDiv);
+                requestDiv.appendChild(actionsDiv);
+                
+                user_list.appendChild(requestDiv);
             }
             
-            const nameDiv = document.createElement('div');
-            nameDiv.textContent = user.username || user.email; 
-            nameDiv.setAttribute('_id', user._id);
-            nameDiv.className = 'friend-name friend-request';
-            
-            const actionsDiv = document.createElement('div');
-            actionsDiv.className = 'friend-request-actions';
-            
-            const acceptBtn = document.createElement('button');
-            acceptBtn.textContent = '✓';
-            acceptBtn.className = 'request-accept';
-            acceptBtn.onclick = function(e) {
-                e.stopPropagation();
-                acceptFriendRequest(friendRequest._id); 
-            };
-            
-            const rejectBtn = document.createElement('button');
-            rejectBtn.textContent = '✗';
-            rejectBtn.className = 'request-reject';
-            rejectBtn.onclick = function(e) {
-                e.stopPropagation();
-                rejectFriendRequest(friendRequest._id); 
-            };
-            
-            actionsDiv.appendChild(acceptBtn);
-            actionsDiv.appendChild(rejectBtn);
-            
-            requestDiv.appendChild(profileImageDiv);
-            requestDiv.appendChild(nameDiv);
-            requestDiv.appendChild(actionsDiv);
-            
-            user_list.appendChild(requestDiv);
         }
-        
-        const friendsHeader = document.createElement('div');
-        friendsHeader.className = 'friends-header';
-        friendsHeader.textContent = 'Friends';
-        user_list.appendChild(friendsHeader);
+    } else {
+        console.log('No friend requests to display.');
     }
-}
 
     if (data.friends && data.friends.length > 0) {
         const user_list = document.querySelector('.lower-component');
-        if (!user_list) {
-            console.error('User list element not found.');
-            return;
-        }
-
         checkFriendsOnlineStatus(data.friends);
-        user_list.innerHTML = ''; // Clear previous content
 
         let count = data.friends.length;
         for (let index = 0; index < count; index++) {
@@ -309,12 +304,9 @@ if (data.friendsRequests && data.friendsRequests.length > 0) {
     } else {
         console.error('No friends data found.');
     }
+
     if (data.groups && data.groups.length > 0) {
         const user_list = document.querySelector('.lower-component');
-        if (!user_list) {
-            console.error('User list element not found.');
-            return;
-        }
 
         let count = data.groups.length;
         for (let index = 0; index < count; index++) {
@@ -431,10 +423,15 @@ function addFriend(event) {
     .then(response => response.json())
     .then(data => {
         console.log("Add friend response:", data);
-        if (data.message === "Friend request sent successfully!") {
+        if (data.success) {
             fetchChatData(false);
         } else {
-            alert("Failed to add friend");
+            const errorEl = document.getElementById('topComponentErrorMessage');
+            errorEl.textContent = data.message || "Failed to send friend request";
+
+            setTimeout(() => {
+               errorEl.textContent = "";
+            }, 3000); 
         }
     })
     .catch(error => {
@@ -446,7 +443,7 @@ function addFriend(event) {
 function acceptFriendRequest(requestId) {
     const token = sessionStorage.getItem('jwt');
     fetch(`http://localhost:5000/api/v1/friends/${encodeURIComponent(requestId)}/accept`, {
-        method: "POST",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -455,10 +452,15 @@ function acceptFriendRequest(requestId) {
     .then(response => response.json())
     .then(data => {
         console.log("Accept friend request response:", data);
-        if (data.message === "Friend request accepted successfully!") {
+        if (data.success) {
             fetchChatData(false);
         } else {
-            alert("Failed to accept friend request");
+            const errorEl = document.getElementById('topComponentErrorMessage');
+            errorEl.textContent = data.message || "Failed to accept friend request";
+
+            setTimeout(() => {
+               errorEl.textContent = "";
+            }, 3000); 
         }
     })
     .catch(error => {
@@ -469,8 +471,8 @@ function acceptFriendRequest(requestId) {
 
 function rejectFriendRequest(requestId) {
     const token = sessionStorage.getItem('jwt');
-    fetch(`http://localhost:5000/api/v1/friends/${encodeURIComponent(requestId)}/`, {
-        method: "POST",
+    fetch(`http://localhost:5000/api/v1/friends/${encodeURIComponent(requestId)}/reject`, {
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -479,10 +481,15 @@ function rejectFriendRequest(requestId) {
     .then(response => response.json())
     .then(data => {
         console.log("Reject friend request response:", data);
-        if (data.message === "Friend request rejected successfully!") {
+        if (data.success) {
             fetchChatData(false);
         } else {
-            alert("Failed to reject friend request");
+            const errorEl = document.getElementById('topComponentErrorMessage');
+            errorEl.textContent = data.message || "Failed to reject friend request";
+
+            setTimeout(() => {
+               errorEl.textContent = "";
+            }, 3000); 
         }
     })
     .catch(error => {
@@ -516,7 +523,12 @@ function createGroup(event) {
         if (data.message === "Group created successfully!") {
             fetchChatData(false);
         } else {
-            alert("Failed to create group");
+            const errorEl = document.getElementById('topComponentErrorMessage');
+            errorEl.textContent = data.message || "Failed to create group";
+
+            setTimeout(() => {
+               errorEl.textContent = "";
+            }, 3000); 
         }
     })
     .catch(error => {
@@ -1193,3 +1205,35 @@ function setupTypingDetection() {
         return originalSendMessage.apply(this, arguments);
     };
 }
+
+const tabs = document.querySelectorAll(".navigation-menu li");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        const users = document.querySelectorAll(".lower-component .user");
+
+        users.forEach(user => {
+            console.log("Checking user:", user);
+            user.classList.add("hidden");
+
+            if (tab.id === "general") {
+                user.classList.remove("hidden");
+            }
+
+            if (tab.id === "nav-friends" && user.classList.contains("friend-selected")) {
+                user.classList.remove("hidden");
+            }
+
+            if (tab.id === "nav-groups" && user.classList.contains("group-selected")) {
+                user.classList.remove("hidden");
+            }
+
+            if (tab.id === "nav-friend-requests" && user.classList.contains("friend-request")) {
+                user.classList.remove("hidden");
+            }
+        });
+    });
+});

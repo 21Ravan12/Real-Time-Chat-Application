@@ -50,6 +50,19 @@ export default class FriendController {
     }
   }
 
+  static async rejectFriendRequest(req, res, next) {
+    try {
+      const request = await FriendService.rejectFriendRequest(
+        req.params.id,
+        req.user._id
+      );
+      success(res, request);
+    } catch (error) {
+      logger.error(`Reject friend request failed: ${error.message}`);
+      next(error);
+    }
+  }
+
   static async removeFriend(req, res, next) {
     try {
       await FriendService.removeFriend(

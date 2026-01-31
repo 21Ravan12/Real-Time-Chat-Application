@@ -213,12 +213,14 @@
 
 <div class="Landing-page">
     <div class="main-container">
-        <div class="left-container">        
+        <div class="left-container">  
             <div class="top-component-top">
                 <button class="add-thing-btn" onclick="toggleAddUser()">Add Friend</button>
                 <button class="add-thing-btn" onclick="toggleAddGroup()">Create Group</button>
             </div>
             <div class="top-component-lower">
+               <div class="topComponentErrorMessage" id="topComponentErrorMessage"></div>     
+
                 <!-- Add Friend Section -->
                 <div class="add-thing-container" id="add-friend-container">
                     <form id="addFriendForm">
@@ -259,7 +261,16 @@
                     <i class="fas fa-cog"></i> 
                 </button>
             </div>
-        
+
+            <nav class="navigation-menu">   
+                <ul id="navigation-list">
+                    <li id="general" class="active">General</li>
+                    <li id="nav-friends" class="navigation-item">Friends</li>
+                    <li id="nav-groups" class="navigation-item">Groups</li>
+                    <li id="nav-friend-requests" class="navigation-item">Requests</li>
+                </ul>
+            </nav>
+
             <div class="lower-component" id="lower-component"></div>
         </div>
         
@@ -297,8 +308,11 @@
             <div class="chat-box" id="chat-box"></div>
                 <div class="input-container">
                     <input type="text" id="message-input" placeholder="Type your message...">
+                    <button onclick="sendMessage()" id="send-button" class="send-button" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i> <!-- Paper plane icon for send -->
+                    </button>
                 </div>
-        </div>
+            </div>
     </div>
 
     <!-- Friend Detail Section -->

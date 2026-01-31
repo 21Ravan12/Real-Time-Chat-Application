@@ -1,6 +1,6 @@
 .left-container {
     width: 20vw;
-    min-width: 240px;
+    min-width: 260px;
     height: 100vh;
     background: rgba(28, 32, 38, 0.98);
     border-right: 1px solid #23272f;
@@ -44,6 +44,14 @@
     overflow-y: auto;
     box-shadow: 0 2px 6px rgba(0,0,0,0.07);
     z-index: 1000;
+}
+
+.topComponentErrorMessage {
+    color: #ff7043;
+    font-size: 14px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 500;
 }
 
 .profile-btn {
@@ -535,35 +543,34 @@
 }
 
 
-
-
-.friend-requests-header, .friends-header {
-    padding: 10px 15px;
-    font-weight: bold;
+.friend-requests-header,
+.friends-header {
     color: #666;
-    border-bottom: 1px solid #eee;
-    margin-top: 10px;
 }
 
 .friend-requests-header {
-    margin-top: 0;
-    color: #4CAF50; 
+    color: #4CAF50;
 }
 
 .friend-request {
-    background-color: #f9f9f9; 
-    border-left: 3px solid #4CAF50; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #23272f 80%, #23272f00 100%);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
 }
 
-.friend-request-actions {
-    display: flex;
-    margin-left: auto;
-    gap: 5px;
+.friend-request:hover {
+    background: linear-gradient(90deg, #2b2f38 80%, #23272f00 100%);
+    transform: scale(1.04);
+    box-shadow: 0 2px 8px rgba(0,188,212,0.07);
 }
 
 .request-accept, .request-reject {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -578,4 +585,44 @@
 .request-reject {
     background-color: #f44336;
     color: white;
+}
+
+
+.navigation-menu {
+    margin: 0px 0;
+    padding: 0 8px;
+    border-right: 1px solid #333;
+}
+
+.navigation-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navigation-menu li {
+    flex: 1;                 /* 🔥 eşit genişlik */
+    text-align: center;
+    padding: 8px 6px;
+    border-radius: 16px;
+    font-size: 14px;
+    color: #bfc9d1;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover */
+.navigation-menu li:hover {
+    background: #2b2f38;
+    color: #43e97b;
+}
+
+/* Aktif sekme */
+.navigation-menu li.active {
+    background: #43e97b;
+    color: #ffffff;
 }

@@ -30,6 +30,14 @@ router.patch(
   friendController.acceptFriendRequest
 );
 
+// PATCH /api/friends/:id/reject
+router.patch(
+  '/:id/reject',
+  validateObjectId('id'),
+  validateRequest,
+  friendController.rejectFriendRequest
+);
+
 // DELETE /api/friends/:id
 router.delete(
   '/:id',

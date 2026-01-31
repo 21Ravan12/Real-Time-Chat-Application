@@ -15,3 +15,7 @@
     flex-grow: 1;
     background: transparent;
 }
+
+.hidden {
+    display: none !important;
+}
