@@ -1,15 +1,18 @@
 function toggleLeftContainer() {
     const button = document.querySelector('.toggle-btn');
-    button.classList.toggle('rotated');
     const leftContainer = document.querySelector(".left-container");
-    leftContainer.classList.toggle("open-tggl");
     const chatContainer = document.getElementById("chat-container");
+    
+    // Sadece CSS sınıflarını değiştir
+    button.classList.toggle('rotated');
+    leftContainer.classList.toggle("open-tggl");
     chatContainer.classList.toggle("close-tggl");
-    if (leftContainer.classList.contains("open-tggl")) {
-        button.style.left = '74.4vw';
-    } else {
-        button.style.left = '-4px';
-    }
+    
+    // Button'un open sınıfını değiştir
+    button.classList.toggle('open');
+    
+    // Pozisyon CSS transition ile otomatik halledilsin
+    // CSS'de: .toggle-btn.open { left: calc(75vw - 4px); }
 }
 
 function updateProfileUI(data) {

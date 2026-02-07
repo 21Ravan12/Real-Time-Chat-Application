@@ -18,104 +18,336 @@
 <body>
 
 <div class="main-page">
+    <!-- Modern Header with Glass Morphism -->
     <header class="main-navbar">
         <div class="platform-logo">
             <h1>RealTalk</h1>
         </div>
         <nav class="navigation-links">
-            <a href="#about-section">About</a>
-            <a href="#features-section">Enterprise Features</a>
-            <a href="#architecture-section">Architecture</a>
-            <a href="#signup-section">Get Started</a>
-            <a onclick="navigateTo('login-page')" class="login-button">Enterprise Login</a>
+            <a href="#features-section" class="nav-link">
+                <span class="nav-text">Features</span>
+            </a>
+            <a href="#architecture-section" class="nav-link">
+                <span class="nav-text">Architecture</span>
+            </a>
+            <a href="#tech-section" class="nav-link">
+                <span class="nav-text">Tech Stack</span>
+            </a>
+            <a href="#demo-section" class="nav-link">
+                <span class="nav-text">Demo</span>
+            </a>
+            <button onclick="navigateTo('login-page')" class="login-button">
+                Login
+            </button>
         </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero-banner">
+        <div class="hero-background">
+            <div class="gradient-circle circle-1"></div>
+            <div class="gradient-circle circle-2"></div>
+            <div class="gradient-circle circle-3"></div>
+        </div>
         <div class="hero-content">
-            <h2>Enterprise-Grade Messaging Platform</h2>
-            <p>Next Evolution of Social Communication - Production-ready enterprise messaging with advanced security and real-time capabilities</p>
-            <a href="#signup-section" class="primary-cta-button">Deploy Now</a>
+            <h1 class="hero-title">
+                Real-Time Chat,
+                <span class="gradient-text">Built Simple</span>
+            </h1>
+            <p class="hero-description">
+                A straightforward messaging platform with secure communication, 
+                real-time updates, and reliable architecture.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">WebSocket</div>
+                    <div class="stat-label">Real-Time</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Encrypted</div>
+                    <div class="stat-label">Messages</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Scalable</div>
+                    <div class="stat-label">Infrastructure</div>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <button onclick="navigateTo('sign-up-page')" class="primary-cta-button">
+                    Get Started
+                </button>
+                <button class="secondary-cta-button" onclick="scrollToDemo()">
+                    View Demo
+                </button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="chat-preview">
+                <div class="chat-header">
+                    <div class="chat-status online"></div>
+                    <span>General Channel</span>
+                </div>
+                <div class="chat-messages">
+                    <div class="message received">
+                        <div class="message-avatar">👤</div>
+                        <div class="message-content">
+                            <div class="message-sender">User</div>
+                            <div class="message-text">Messages are encrypted end-to-end</div>
+                        </div>
+                    </div>
+                    <div class="message sent">
+                        <div class="message-content">
+                            <div class="message-text">Confirmed - chat is secure</div>
+                            <div class="message-time">Now</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="about-section" class="about-platform">
-        <h2>About RealTalk</h2>
-        <p>RealTalk is a production-ready enterprise messaging solution that evolved from Social Media Platform v2. Featuring JWT authentication, Redis session management, and multi-database support for scalable, secure communication.</p>
-    </section>
-
+    <!-- Features Section -->
     <section id="features-section" class="platform-features">
-        <h2>Enterprise Features</h2>
-        <div class="feature-list">
-            <div class="feature-item security-feature">
-                <h3>🔐 Advanced Security System</h3>
-                <p>Role-based access control, Socket.io authentication middleware, input validation & sanitization, Redis session management</p>
+        <div class="section-header">
+            <h2 class="section-title">Features</h2>
+            <p class="section-subtitle">What you get with RealTalk</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3 class="feature-title">Secure</h3>
+                <p class="feature-description">
+                    JWT authentication, message encryption, rate limiting, and input validation to protect your communications.
+                </p>
             </div>
-            <div class="feature-item realtime-feature">
-                <h3>💬 Real-Time Communication</h3>
-                <p>WebSocket implementation with online/offline status tracking, typing indicators, and message delivery receipts</p>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Real-Time</h3>
+                <p class="feature-description">
+                    WebSocket-powered instant messaging with live typing indicators and delivery status.
+                </p>
             </div>
-            <div class="feature-item multi-platform-feature">
-                <h3>📱 Multi-Platform Support</h3>
-                <p>Desktop-optimized interface, mobile-first responsive design, and Progressive Web App (PWA) ready</p>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Monitored</h3>
+                <p class="feature-description">
+                    Built-in performance metrics, error tracking, and system health monitoring.
+                </p>
             </div>
-            <div class="feature-item social-feature">
-                <h3>👥 Enhanced Social Integration</h3>
-                <p>Advanced friend management system with group management and global user discovery</p>
+
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 class="feature-title">Scalable</h3>
+                <p class="feature-description">
+                    Modular architecture with Docker support, load balancing, and horizontal scaling capabilities.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Group Chat</h3>
+                <p class="feature-description">
+                    Create groups, invite friends, and manage members with role-based access control.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Simple Setup</h3>
+                <p class="feature-description">
+                    Easy installation with clear documentation, minimal configuration needed to get started.
+                </p>
             </div>
         </div>
     </section>
 
+    <!-- Architecture Section -->
     <section id="architecture-section" class="system-architecture">
-        <h2>System Architecture</h2>
-        <div class="architecture-grid">
-            <div class="arch-layer">
-                <h3>🏗️ Backend Microservices</h3>
-                <ul>
-                    <li>🛡️ Security Layer (JWT, validation, socketAuth)</li>
-                    <li>💼 Business Logic (controllers & services)</li>
-                    <li>📊 Data Management (multi-database setup)</li>
-                    <li>🔌 Real-Time Layer (WebSocket handlers)</li>
+        <div class="section-header">
+            <h2 class="section-title">Architecture</h2>
+            <p class="section-subtitle">Layered design for reliability</p>
+        </div>
+
+        <div class="architecture-visual">
+            <div class="arch-layer frontend-layer">
+                <div class="layer-label">Frontend</div>
+                <div class="layer-components">
+                    <div class="component">Single Page App</div>
+                    <div class="component">WebSocket Client</div>
+                </div>
+            </div>
+            
+            <div class="arch-arrow">↓</div>
+            
+            <div class="arch-layer gateway-layer">
+                <div class="layer-label">API Gateway</div>
+                <div class="layer-components">
+                    <div class="component">Rate Limiting</div>
+                    <div class="component">Request Validation</div>
+                </div>
+            </div>
+            
+            <div class="arch-arrow">↓</div>
+            
+            <div class="arch-layer service-layer">
+                <div class="layer-label">Services</div>
+                <div class="layer-components">
+                    <div class="component">Auth</div>
+                    <div class="component">Chat</div>
+                    <div class="component">Notifications</div>
+                </div>
+            </div>
+            
+            <div class="arch-arrow">↓</div>
+            
+            <div class="arch-layer data-layer">
+                <div class="layer-label">Data</div>
+                <div class="layer-components">
+                    <div class="component">MongoDB</div>
+                    <div class="component">Redis Cache</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech-section" class="tech-stack">
+        <div class="section-header">
+            <h2 class="section-title">Tech Stack</h2>
+            <p class="section-subtitle">Reliable, proven technologies</p>
+        </div>
+
+        <div class="stack-categories">
+            <div class="stack-category">
+                <h3 class="category-title">Backend</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" title="Node.js">
+                        <span>⚡</span>
+                        <span class="tech-name">Node.js</span>
+                    </div>
+                    <div class="tech-icon" title="Express">
+                        <span>🚂</span>
+                        <span class="tech-name">Express</span>
+                    </div>
+                    <div class="tech-icon" title="Socket.io">
+                        <span>🔌</span>
+                        <span class="tech-name">Socket.io</span>
+                    </div>
+                    <div class="tech-icon" title="Redis">
+                        <span>🗄️</span>
+                        <span class="tech-name">Redis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stack-category">
+                <h3 class="category-title">Frontend</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" title="Vanilla JS">
+                        <span>📜</span>
+                        <span class="tech-name">JavaScript</span>
+                    </div>
+                    <div class="tech-icon" title="CSS3">
+                        <span>🎨</span>
+                        <span class="tech-name">CSS3</span>
+                    </div>
+                    <div class="tech-icon" title="WebSockets">
+                        <span>⚡</span>
+                        <span class="tech-name">WebSockets</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stack-category">
+                <h3 class="category-title">DevOps</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" title="Docker">
+                        <span>🐳</span>
+                        <span class="tech-name">Docker</span>
+                    </div>
+                    <div class="tech-icon" title="MongoDB">
+                        <span>🍃</span>
+                        <span class="tech-name">MongoDB</span>
+                    </div>
+                    <div class="tech-icon" title="GitHub">
+                        <span>🔗</span>
+                        <span class="tech-name">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo-section" class="demo-preview">
+        <div class="section-header">
+            <h2 class="section-title">Get Started</h2>
+            <p class="section-subtitle">Try RealTalk today</p>
+        </div>
+        
+        <div class="demo-container">
+            <div class="demo-info">
+                <h3>Create Your Account</h3>
+                <p>Sign up for free and start messaging immediately.</p>
+                <ul class="demo-features">
+                    <li>✓ Full access to all features</li>
+                    <li>✓ Create groups and chat rooms</li>
+                    <li>✓ Add friends and manage contacts</li>
+                    <li>✓ Real-time notifications</li>
                 </ul>
+                <button onclick="navigateTo('sign-up-page')" class="demo-cta">
+                    Sign Up Now
+                </button>
             </div>
-            <div class="arch-layer">
-                <h3>🎨 Frontend Architecture</h3>
-                <ul>
-                    <li>📱 Multi-Device Support (Desktop & Mobile)</li>
-                    <li>⚡ Client-Side Logic (SPA navigation)</li>
-                    <li>🔧 Modular CSS Architecture</li>
-                    <li>🌐 Socket.io Client Integration</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="tech-stack">
-        <h2>Technical Stack</h2>
-        <div class="stack-grid">
-            <div class="backend-stack">
-                <h3>Backend Technologies</h3>
-                <p>Node.js • Express.js • Socket.io • JWT • Redis • MongoDB • PostgreSQL • Helmet • CORS</p>
-            </div>
-            <div class="frontend-stack">
-                <h3>Frontend Technologies</h3>
-                <p>Vanilla JavaScript (ES6+) • Modular CSS • Client-side Router • Socket.io Client</p>
+            <div class="demo-screenshot">
+                <div class="screenshot-frame">
+                    <div class="screenshot-header">
+                        <div class="window-controls">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="screenshot-title">RealTalk - Chat Interface</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="signup-section" class="signup-call-to-action">
-        <h2>Ready for Production?</h2>
-        <p>Deploy RealTalk with Docker or traditional setup. Enterprise-grade messaging at your fingertips.</p>
-        <div class="cta-buttons">
-            <a onclick="navigateTo('sign-up-page')" class="primary-cta-button">Quick Deployment</a>
-            <a href="#documentation" class="secondary-cta-button">View Documentation</a>
+    <!-- CTA Section -->
+    <section class="final-cta">
+        <div class="cta-content">
+            <h2>Ready?</h2>
+            <p>Start chatting securely with RealTalk.</p>
+            <div class="cta-buttons">
+                <button onclick="navigateTo('sign-up-page')" class="primary-cta-button">
+                    Sign Up
+                </button>
+                <button onclick="navigateTo('login-page')" class="secondary-cta-button">
+                    Log In
+                </button>
+            </div>
         </div>
     </section>
 
-    <footer class="main-footer">
-        <p>&copy; 2024 RealTalk Enterprise - From Learning Project to Production System</p>
-        <p class="developer-credit">Developed by Ravan Asgarov | Professional Software Architecture</p>
+    <!-- Footer -->
+    <footer class="main-footer">        
+        <div class="footer-bottom">
+            <p>&copy; 2024 RealTalk. All rights reserved.</p>
+            <div class="developer-credit">
+                <span>Created by </span>
+                <a href="https://github.com/21Ravan12" class="developer-link">
+                    Ravan Asgarov
+                </a>
+            </div>
+        </div>
     </footer>
 </div>
 
@@ -287,15 +519,10 @@
                         <span id="chat-user-status" class="user-status">Click on a friend or group to start chatting</span>
 
                         <span id="typing-indicator" class="typing-indicator">
-                            <span class="typing-word" aria-hidden="true">
-                                <span class="typing-letter">t</span>
-                                <span class="typing-letter">y</span>
-                                <span class="typing-letter">p</span>
-                                <span class="typing-letter">i</span>
-                                <span class="typing-letter">n</span>
-                                <span class="typing-letter">g</span>
-                            </span>
-
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
                     </div>
                 </div>
                 <div class="chat-actions">
@@ -319,8 +546,8 @@
     <div class="detail-section friend-detail" id="friend-detail">
         <div class="detail-header">
             <h2>Friend Details</h2>
-            <button class="chat-action-btn" title="More options" aria-label="More options">
-                <i class="fas fa-ellipsis-v"></i>
+            <button class="close-detail" onclick="closeDetail()" aria-label="Close details">
+                <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="detail-content">

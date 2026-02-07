@@ -1,19 +1,78 @@
+/* Modern Landing Page CSS */
 .Landing-page {
     width: 100vw;
     height: 100vh;
     min-height: 100dvh;
     display: none;
     flex-direction: column;
-    background: linear-gradient(135deg, #181818 60%, #23272f 100%);
+    background: linear-gradient(135deg, var(--bg-primary, #0f0f1a) 0%, var(--bg-secondary, #1a1a2e) 100%);
+    position: relative;
+    overflow: hidden;
+    animation: pageFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Background Effects */
+.Landing-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(67, 97, 238, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(114, 9, 183, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(247, 37, 133, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    animation: gradientFloat 20s ease-in-out infinite alternate;
+}
+
+/* Animated Gradient Orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    animation: floatOrb 15s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary, #4361ee);
+    top: -150px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--secondary, #7209b7);
+    bottom: -200px;
+    left: -150px;
+    animation-delay: 5s;
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: var(--accent, #f72585);
+    top: 30%;
+    left: 10%;
+    animation-delay: 10s;
+}
+
+/* Main Container - Glass Morphism Layout */
 .main-container {
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     min-height: 100dvh;
-    flex-grow: 1;
+    flex: 1;
     background: transparent;
+    position: relative;
+    z-index: 1;
 }
 
 .hidden {
