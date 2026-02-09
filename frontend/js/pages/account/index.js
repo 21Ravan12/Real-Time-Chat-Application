@@ -13,7 +13,7 @@ function updateAccountProfileUI(data) {
             this.src = defaultAvatar;
             this.onerror = null;
         };
-        profileImageElement.src = `http://localhost:5000${data.avatar}` || defaultAvatar;
+        profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
     }
 
     nameAccountElement.textContent = data.username || 'No Name';
@@ -38,7 +38,7 @@ function fetchProfileDataAccount() {
                     this.src = defaultAvatar;
                     this.onerror = null;
                 };
-                profileImageElement.src = `http://localhost:5000${data.avatar}` || defaultAvatar;
+                profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
             }
 
             // Set other profile data with fallbacks
@@ -90,7 +90,7 @@ async function changeProfileData() {
   console.log('Saving profile data...', { name, bio, hasImage: !!profileImageInput.files[0] });
 
   try {
-    const response = await fetch('http://localhost:5000/api/v1/users/', {
+    const response = await fetch('https://real-time-chat-application-production-faea.up.railway.app/api/v1/users/', {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${token}`,

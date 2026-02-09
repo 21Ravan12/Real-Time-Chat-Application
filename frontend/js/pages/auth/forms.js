@@ -9,7 +9,7 @@ document.getElementById("login-form").addEventListener("submit", async function(
     };
 
     try {
-        const response = await fetch("http://localhost:5000/api/v1/auth/login", {
+        const response = await fetch("https://real-time-chat-application-production-faea.up.railway.app/api/v1/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -54,7 +54,7 @@ document.getElementById("forget-password-form").addEventListener("submit", funct
         email: formData.get('forget-email')
     };
 
-    fetch("http://localhost:5000/api/v1/auth/forgot-password/sendCode", {
+    fetch("https://real-time-chat-application-production-faea.up.railway.app/api/v1/auth/forgot-password/sendCode", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -88,7 +88,7 @@ document.getElementById("forget-code-form").addEventListener("submit", function(
         redisKey: JSON.parse(sessionStorage.getItem('redisKey')) || null
     };
 
-    fetch("http://localhost:5000/api/v1/auth/forgot-password/verifyCode", {
+    fetch("https://real-time-chat-application-production-faea.up.railway.app/api/v1/auth/forgot-password/verifyCode", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -136,7 +136,7 @@ document.getElementById("refresh-password-form").addEventListener("submit", func
     // Get the token from wherever it's stored (localStorage, sessionStorage, etc.)
     const token = sessionStorage.getItem('resetToken'); // or sessionStorage.getItem('token')
 
-    fetch("http://localhost:5000/api/v1/auth/reset-password", {
+    fetch("https://real-time-chat-application-production-faea.up.railway.app/api/v1/auth/reset-password", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -175,7 +175,7 @@ document.getElementById("sign-up-form").addEventListener("submit", function(even
         bio: formData.get('bio'),
     };
 
-    fetch("http://localhost:5000/api/v1/auth/register", {
+    fetch("https://real-time-chat-application-production-faea.up.railway.app/api/v1/auth/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -208,7 +208,7 @@ document.getElementById("enter-code-form").addEventListener("submit", function(e
         redisKey: JSON.parse(sessionStorage.getItem('redisKey')) || null
     };
 
-    fetch("http://localhost:5000/api/v1/auth/completeRegistration", {
+    fetch("https://real-time-chat-application-production-faea.up.railway.app/api/v1/auth/completeRegistration", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
