@@ -1,32 +1,46 @@
-// Importing required modules
-import nodemailer from 'nodemailer';
-import { emailCredentials } from '../config/email.config.js';
+// email.service.js
 
-// Creating a transporter object using nodemailer for sending emails
+import nodemailer from 'nodemailer';
+
+// Email configuration
+const emailCredentials = {
+  user: process.env.EMAIL_USER,
+  pass: process.env.EMAIL_PASS,
+  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+  port: Number(process.env.EMAIL_PORT) || 587,
+  secure: Number(process.env.EMAIL_PORT) === 465
+};
+
+// Create transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: emailCredentials.host,
+  port: emailCredentials.port,
+  secure: emailCredentials.secure,
   auth: {
     user: emailCredentials.user,
     pass: emailCredentials.pass
-  }
+  },
+  requireTLS: true,
+  tls: {
+    rejectUnauthorized: false // Railway / cloud ortamları için
+  },
+  connectionTimeout: 10000
 });
 
-// Function to send an identification code email
+// Send identification code email
 export const sendCodeEmail = async (email, code) => {
   const mailOptions = {
-    from: emailCredentials.user,
+    from: `"Auth Service" <${emailCredentials.user}>`,
     to: email,
     subject: 'Identification',
     text: `Your identification code is: ${code}`
   };
 
   try {
-    // Sending the email using the transporter
     await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully!");
+    console.log('Email sent successfully!');
   } catch (err) {
-    // Logging and throwing an error if email sending fails
-    console.error("Email error:", err);
+    console.error('Email error:', err);
     throw new Error(`Failed to send email. ${err.message}`);
   }
 };
