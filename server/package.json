@@ -1,29 +1,54 @@
 {
-  "name": "chat-app-backend",
-  "version": "1.0.0",
-  "description": "Modern chat application backend",
+  "name": "realtalk-backend",
+  "version": "2.0.0",
+  "description": "Enterprise-grade real-time messaging platform backend",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
+    "dev:monitor": "nodemon --inspect server.js",
+    
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --runInBand --detectOpenHandles --testTimeout=30000",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --watch --runInBand --testTimeout=30000",
     "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage --runInBand --testTimeout=30000",
     "test:auth": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest __tests__/integration/auth.test.js --runInBand --testTimeout=30000",
     "test:user": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest __tests__/integration/user.test.js --runInBand --testTimeout=30000",
     "test:friend": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest __tests__/integration/friend.test.js --runInBand --testTimeout=30000",
-    "test:chat": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest __tests__/integration/chat.test.js --runInBand --testTimeout=30000"
+    "test:chat": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest __tests__/integration/chat.test.js --runInBand --testTimeout=30000",
+    "test:load": "k6 run scripts/load-test.js",  
+    
+    "build": "npm ci --only=production",
+    "build:dev": "npm ci",
+    "clean": "rm -rf node_modules && rm -f package-lock.json",
+    "docker:build": "docker build -f Dockerfile.prod -t realtalk-backend .",
+    "docker:run": "docker run -p 5000:5000 --env-file .env.production realtalk-backend",
+    "docker:compose": "docker-compose -f docker-compose.prod.yml up -d",
+    "docker:down": "docker-compose -f docker-compose.prod.yml down",
+    
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.js\"",
+    "audit": "npm audit --audit-level=moderate",
+    
+    "monitor:start": "docker-compose -f docker-compose.monitoring.yml up -d",
+    "monitor:stop": "docker-compose -f docker-compose.monitoring.yml down",
+    
+    "db:seed": "node scripts/seed-demo-data.js",
+    "db:migrate": "node scripts/migrate.js",
+    "db:backup": "node scripts/backup.js"
   },
   "dependencies": {
     "@sentry/node": "^10.32.1",
     "@sentry/profiling-node": "^10.32.1",
     "bcryptjs": "^3.0.2",
+    "compression": "^1.7.4",  
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-prom-bundle": "^8.0.0",
+    "express-rate-limit": "^7.1.5",  
     "express-validator": "^7.2.1",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
@@ -33,20 +58,30 @@
     "nodemailer": "^7.0.5",
     "prom-client": "^15.1.3",
     "redis": "^4.6.13",
+    "sharp": "^0.33.2",  
     "socket.io": "^4.7.2",
-    "winston": "^3.17.0"
+    "socket.io-redis": "^6.1.1",  
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0"  
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
     "@babel/preset-env": "^7.28.6",
     "babel-jest": "^30.2.0",
     "cross-env": "^10.1.0",
+    "eslint": "^8.57.0",  
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
     "jest": "^30.2.0",
-    "supertest": "^7.2.2",
-    "mongodb-memory-server": "^10.0.2"
+    "k6": "^0.0.0",  
+    "mongodb-memory-server": "^10.0.2",
+    "nodemon": "^3.0.3",  
+    "prettier": "^3.2.5",  
+    "supertest": "^7.2.2"
   },
   "jest": {
     "testEnvironment": "node",
@@ -66,12 +101,42 @@
       "**/__tests__/**/*.test.js"
     ],
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.test.js"
+      "api/**/*.js",
+      "utils/**/*.js",
+      "sockets/**/*.js",
+      "!**/*.test.js",
+      "!**/node_modules/**"
     ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__tests__/fixtures/"
     ]
-  }
+  },
+  "keywords": [
+    "realtime",
+    "chat",
+    "messaging",
+    "socket.io",
+    "mongodb",
+    "redis",
+    "enterprise"
+  ],
+  "author": "Ravan Asgarov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/21Ravan12/RealTalk"
+  },
+  "bugs": {
+    "url": "https://github.com/21Ravan12/RealTalk/issues"
+  },
+  "homepage": "https://realtalk.live"
 }
