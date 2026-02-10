@@ -220,6 +220,9 @@ document.getElementById("enter-code-form").addEventListener("submit", function(e
     .then(data => {
         console.log("Registration response:", data);
         if (data.message == "Registration completed successfully!") {
+            if (data.token) {
+                sessionStorage.setItem('jwt', data.token);
+            }
             sessionStorage.setItem('profileData', JSON.stringify(data.user));
             updateProfileUI(data.user);
             navigateTo("Landing-page");
