@@ -219,25 +219,31 @@ static async markMessagesAsRead(id, type, userId) {
 
 static async getChatByGroupId(groupId, userId) {
   try {
-    // First, check if the group exists
     const group = await Group.findById(groupId);
     if (!group) {
-      throw new AppError(ERROR_MESSAGES.GROUP_NOT_FOUND, HTTP_STATUS.NOT_FOUND);
+      throw new AppError(
+        ERROR_MESSAGES.GROUP_NOT_FOUND,
+        HTTP_STATUS.NOT_FOUND
+      );
     }
 
-    // Check if user is a member of the group
-    const isMember = group.members.some(member => 
-      member.toString() === userId.toString()
+    const userIdStr = userId.toString();
+
+    const isMember = group.members.some(member =>
+      member.user && member.user.toString() === userIdStr
     );
-    
+
     if (!isMember) {
-      throw new AppError(ERROR_MESSAGES.UNAUTHORIZED_GROUP_ACCESS, HTTP_STATUS.FORBIDDEN);
+      throw new AppError(
+        ERROR_MESSAGES.UNAUTHORIZED_GROUP_ACCESS,
+        HTTP_STATUS.FORBIDDEN
+      );
     }
 
-    // Now get the chat
-    const groupChat = await Chat.findOne({ 
-      groupId: groupId, 
-      type: 'group' 
+    // 3️⃣ Chat fetch
+    const groupChat = await Chat.findOne({
+      groupId: groupId,
+      type: 'group'
     })
       .populate('participants', 'name email avatar')
       .populate({
@@ -249,16 +255,26 @@ static async getChatByGroupId(groupId, userId) {
         }
       });
 
-    console.log('Fetched group chat:', groupChat);
     if (!groupChat) {
-      throw new AppError(ERROR_MESSAGES.GROUP_CHAT_NOT_FOUND, HTTP_STATUS.NOT_FOUND);
+      throw new AppError(
+        ERROR_MESSAGES.GROUP_CHAT_NOT_FOUND,
+        HTTP_STATUS.NOT_FOUND
+      );
     }
 
     return groupChat;
+
   } catch (error) {
     if (error instanceof AppError) throw error;
-    logger.error(`Get chat by group ID service error: ${error.message}`);
-    throw new AppError(ERROR_MESSAGES.GROUP_CHAT_FETCH_FAILED, HTTP_STATUS.INTERNAL_SERVER_ERROR);
+
+    logger.error(
+      `Get chat by group ID service error: ${error.message}`
+    );
+
+    throw new AppError(
+      ERROR_MESSAGES.GROUP_CHAT_FETCH_FAILED,
+      HTTP_STATUS.INTERNAL_SERVER_ERROR
+    );
   }
 }
 }
