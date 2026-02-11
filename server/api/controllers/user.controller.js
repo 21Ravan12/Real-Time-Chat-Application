@@ -34,22 +34,48 @@ export default class UserController {
     }
   }
 
-  static async updateUser(req, res, next) {
-    try {
-      logger.info('Request body:', req.body);
-      const updatedUser = await UserService.updateUser(
-        req.user._id,
-        req.body,
-        req.file
-      );
-      res.json({ status: 'success', data: updatedUser });
-    } catch (error) {
-      logger.error(`Update profile failed: ${error.message}`);
-      next(error);
+static async updateUser(req, res, next) {
+  try {
+    logger.info('Request body:', req.body);
+    
+    // Extract file info from req.file (if exists)
+    let fileBuffer = null;
+    let fileName = null;
+    let mimetype = null;
+    
+    if (req.file) {
+      fileBuffer = req.file.buffer;      // File buffer
+      fileName = req.file.originalname;  // Original filename
+      mimetype = req.file.mimetype;      // MIME type
+      
+      console.log('📁 File upload detected:', {
+        filename: fileName,
+        mimetype: mimetype,
+        size: req.file.size
+      });
     }
+    
+    // Call service with correct parameters
+    const updatedUser = await UserService.updateUser(
+      req.user._id,
+      req.body,
+      fileBuffer,    // Buffer
+      fileName,      // Filename
+      mimetype       // MIME type
+    );
+    
+    res.json({ 
+      status: 'success', 
+      data: updatedUser,
+      message: req.file ? 'Profile and avatar updated' : 'Profile updated'
+    });
+  } catch (error) {
+    logger.error(`Update profile failed: ${error.message}`);
+    next(error);
   }
+}
 
-  static async deleteUser(req, res, next) {
+static async deleteUser(req, res, next) {
     try {
       await UserService.deleteUser(req.user._id);
       
