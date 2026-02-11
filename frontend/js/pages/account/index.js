@@ -13,7 +13,7 @@ function updateAccountProfileUI(data) {
             this.src = defaultAvatar;
             this.onerror = null;
         };
-        profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
+        profileImageElement.src = `${data.avatar}` || defaultAvatar;
     }
 
     nameAccountElement.textContent = data.username || 'No Name';
@@ -38,7 +38,7 @@ function fetchProfileDataAccount() {
                     this.src = defaultAvatar;
                     this.onerror = null;
                 };
-                profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
+                profileImageElement.src = `${data.avatar}` || defaultAvatar;
             }
 
             // Set other profile data with fallbacks
