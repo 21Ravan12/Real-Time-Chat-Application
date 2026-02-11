@@ -27,7 +27,7 @@ function updateProfileUI(data) {
             this.onerror = null;
         };
         
-        profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
+        profileImageElement.src = `${data.avatar}` || defaultAvatar;
     }
 }
 
@@ -47,7 +47,7 @@ function updateAccountProfileUI(data) {
             this.src = defaultAvatar;
             this.onerror = null;
         };
-        profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
+        profileImageElement.src = `${data.avatar}` || defaultAvatar;
     }
 
     nameAccountElement.textContent = data.username || 'No Name';
@@ -156,7 +156,7 @@ async function updateLeftContainer(data) {
                 
                 if (user.avatar) { 
                     const img = new Image();
-                    const imageUrl = user.avatar.startsWith('http') ? user.avatar : `https://real-time-chat-application-production-faea.up.railway.app/${user.avatar}`;
+                    const imageUrl = user.avatar.startsWith('http') ? user.avatar : `${user.avatar}`;
                     img.onload = function() {
                         profileImageDiv.style.backgroundImage = `url(${imageUrl})`;
                     };
@@ -230,7 +230,7 @@ async function updateLeftContainer(data) {
             if (friend.profileImage) {
                 const img = new Image();
                 // If the server returns a path starting with '/', prefix the backend origin
-                const imageUrl = friend.profileImage.startsWith('http') ? friend.profileImage : `https://real-time-chat-application-production-faea.up.railway.app/${friend.profileImage}`;
+                const imageUrl = friend.profileImage.startsWith('http') ? friend.profileImage : `${friend.profileImage}`;
                 img.onload = function() {
                     // Use backgroundImage for divs instead of src
                     profileImageDiv.style.backgroundImage = `url(${imageUrl})`;
@@ -647,7 +647,7 @@ async function handleUserClick(event) {
                 event.stopPropagation(); // prevent handleUserClick
                 openFriendDetail(friend);
             }
-            userAvatarElement.src = friend.profileImage ? `https://real-time-chat-application-production-faea.up.railway.app/${friend.profileImage}` : defaultAvatar;
+            userAvatarElement.src = friend.profileImage ? `${friend.profileImage}` : defaultAvatar;
         }
 
         if (userStatusElement) {
@@ -927,7 +927,7 @@ function fetchProfileDataAccount() {
                     this.src = defaultAvatar;
                     this.onerror = null;
                 };
-                profileImageElement.src = `https://real-time-chat-application-production-faea.up.railway.app/${data.avatar}` || defaultAvatar;
+                profileImageElement.src = `${data.avatar}` || defaultAvatar;
             }
 
             // Set other profile data with fallbacks
@@ -1014,7 +1014,7 @@ function openFriendDetail(friend) {
     
     // Update friend details
     document.getElementById('friend-detail-avatar').src = 
-        friend.profileImage ? `https://real-time-chat-application-production-faea.up.railway.app/${friend.profileImage}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2RkZCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjOTk5Ii8+PHBhdGggZD0iTTMwIDcwIFEgMzAgNTAgNTAgNjAgUSA3MCA1MCA3MCA3MCBRIDUwIDgwIDMwIDcwIiBmaWxsPSIjOTk5Ii8+PC9zdmc+';
+        friend.profileImage ? `${friend.profileImage}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2RkZCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjE1IiBmaWxsPSIjOTk5Ii8+PHBhdGggZD0iTTMwIDcwIFEgMzAgNTAgNTAgNjAgUSA3MCA1MCA3MCA3MCBRIDUwIDgwIDMwIDcwIiBmaWxsPSIjOTk5Ii8+PC9zdmc+';
     document.getElementById('friend-detail-name').textContent = friend.name || 'Unknown Friend';
     
     // Set status (you might want to add status to your friend object)
