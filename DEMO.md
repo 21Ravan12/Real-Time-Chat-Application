@@ -241,7 +241,6 @@ February 9, 2026
 └── 13:20 UTC - Production-ready ✅
 
 February 10-11, 2026
-├── Load testing (1,000+ concurrent users)
 ├── Performance optimization
 ├── Bug fixes
 └── Demo stability confirmed
@@ -259,8 +258,6 @@ February 10-11, 2026
 - ✅ Database stays on MongoDB Atlas forever (512MB free)
 - ❌ Backend may go down (Railway credit expires)
 - ❌ Cache may be limited (Upstash commands/day)
-
-**→ Want to keep it running forever? [Buy me a coffee](https://www.buymeacoffee.com/21ravan12) ☕ to cover Railway costs!**
 
 ---
 
@@ -290,7 +287,7 @@ MIT License - Free for educational and commercial use
 
 ---
 
-**🎯 Demo Link: [realtalk.vercel.app](https://realtalk.vercel.app)**  
+**🎯 Demo Link: [https://real-time-chat-application-tau-seven.vercel.app/](https://real-time-chat-application-tau-seven.vercel.app/)**  
 **🔑 Demo Login: demo@realtalk.com / Demo123!**  
 **📧 Demo Code: 123456**
 
