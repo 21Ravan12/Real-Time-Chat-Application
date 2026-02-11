@@ -86,13 +86,15 @@ if (!shouldUseRealTransporter) {
 } else {
   console.log('📧 PRODUCTION MODE: Creating real transporter for', EMAIL_PROVIDER);
   
-  // Gerçek transporter
-  transporter = nodemailer.createTransport({
-    ...emailConfig,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000
-  });
+transporter = nodemailer.createTransport({
+  ...emailConfig,
+  connectionTimeout: 30000,  // 30 saniye
+  greetingTimeout: 30000,
+  socketTimeout: 30000,
+  pool: true,
+  maxConnections: 1,
+  maxMessages: 1
+});
   
   // Test connection (async)
   transporter.verify(function(error, success) {
