@@ -4,39 +4,14 @@
 
 ---
 
-## 🚀 **LIVE DEMO**
+## 🚀 Live Demo
 
-**[👉 CLICK HERE TO TRY THE DEMO 👈](./DEMO.md)**
+**[▶️ TRY IT NOW - CLICK HERE ◀️](./DEMO.md)**
 
-<p align="center">
-  <a href="./DEMO.md">
-    <img src="https://img.shields.io/badge/TRY%20NOW-4F46E5?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-  <a href="https://real-time-chat-application-tau-seven.vercel.app/">
-    <img src="https://img.shields.io/badge/DIRECT%20LINK-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-</p>
+**4 demo accounts ready:** `alice@realtalk.com` / `Demo123!`  
+**Pre-configured friends & groups • No installation • 30 sec test**
 
-### ⚡ 30-Second Quick Test
-
-| **Demo Account** | **Password** | **Status** |
-|-----------------|--------------|------------|
-| 👤 **Alice** | `Demo123!` | 🟢 Online / 5 friends |
-| 👤 **Bob** | `Demo123!` | 🟢 Online / 3 groups |
-| 👤 **Charlie** | `Demo123!` | 🟢 Online / 2 friends |
-| 👤 **Dave** | `Demo123!` | 🟢 Online / 4 friends |
-
-✅ **Pre-configured friends, messages & group chats ready to test!**
-
-### 📊 Live Demo Status
-
-| Component | URL | Status |
-|----------|-----|--------|
-| **Main Application** | [realtalk.vercel.app](https://real-time-chat-application-tau-seven.vercel.app/) | 🟢 Online |
-| **Backend API** | [railway.app](https://real-time-chat-application-production-faea.up.railway.app/) | 🟢 Healthy |
-| **Full Demo Guide** | [./DEMO.md](./DEMO.md) | 📘 Read More |
-
-**[⬆ VIEW COMPLETE DEMO DOCUMENTATION →](./DEMO.md)**
+🔗 **Direct link:** [realtalk.vercel.app](https://real-time-chat-application-tau-seven.vercel.app)
 
 ---
 
