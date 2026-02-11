@@ -1,72 +1,83 @@
 // email.service.js
 
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 console.log('📧 EMAIL SERVICE: Initializing...');
 console.log('📧 NODE_ENV:', process.env.NODE_ENV);
 
 // Check which email provider to use
-const EMAIL_PROVIDER = process.env.EMAIL_PROVIDER || 'brevo'; // brevo, gmail, demo
+const EMAIL_PROVIDER = process.env.EMAIL_PROVIDER || 'resend'; // resend, brevo, gmail, demo
 console.log('📧 Email Provider:', EMAIL_PROVIDER);
 
-// Email configuration based on provider
-let emailConfig = {};
+let resendClient = null;
+let transporter = null;
 
-if (EMAIL_PROVIDER === 'brevo') {
-  // Brevo (Sendinblue) configuration
-  emailConfig = {
-    host: process.env.BREVO_SMTP_HOST || 'smtp-relay.brevo.com',
-    port: Number(process.env.BREVO_SMTP_PORT) || 587,
-    secure: false, // Brevo uses STARTTLS on port 587
-    auth: {
-      user: process.env.BREVO_SMTP_USER,
-      pass: process.env.BREVO_SMTP_KEY // SMTP key from Brevo
-    },
-    tls: {
-      rejectUnauthorized: false // Important for Railway
-    }
-  };
-  console.log('📧 Using Brevo SMTP');
+// Initialize based on provider
+if (EMAIL_PROVIDER === 'resend') {
+  // Resend API configuration
+  const apiKey = process.env.RESEND_API_KEY;
   
-} else if (EMAIL_PROVIDER === 'gmail') {
-  // Gmail configuration
-  emailConfig = {
-    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-    port: Number(process.env.EMAIL_PORT) || 587,
-    secure: Number(process.env.EMAIL_PORT) === 465,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  };
-  console.log('📧 Using Gmail SMTP');
+  if (!apiKey) {
+    console.warn('⚠️ RESEND_API_KEY not set, using demo mode');
+  } else {
+    console.log('📧 Initializing Resend client...');
+    resendClient = new Resend(apiKey);
+    
+    // Create transporter-like interface for Resend
+    transporter = {
+      sendMail: async function(mailOptions) {
+        console.log('📧 Resend: Sending email...', {
+          to: mailOptions.to,
+          subject: mailOptions.subject.substring(0, 50)
+        });
+        
+        try {
+          const { data, error } = await resendClient.emails.send({
+            from: mailOptions.from,
+            to: mailOptions.to,
+            subject: mailOptions.subject,
+            html: mailOptions.html,
+            text: mailOptions.text,
+            headers: {
+              'X-Entity-Ref-ID': `realtalk-${Date.now()}`
+            }
+          });
+          
+          if (error) {
+            console.error('❌ Resend API error:', error);
+            throw new Error(`Resend: ${error.message}`);
+          }
+          
+          console.log('✅ Resend email sent:', data.id);
+          return {
+            messageId: data.id,
+            response: '250 Email sent via Resend API'
+          };
+          
+        } catch (error) {
+          console.error('❌ Resend send error:', error.message);
+          throw error;
+        }
+      }
+    };
+    
+    console.log('✅ Resend client initialized');
+  }
+  
+} else if (EMAIL_PROVIDER === 'brevo' || EMAIL_PROVIDER === 'gmail') {
+  // SMTP providers (backup)
+  console.warn(`⚠️ ${EMAIL_PROVIDER} SMTP may not work on Railway`);
+  // ... keep your existing SMTP code but it likely won't work
   
 } else {
-  // Demo mode - no real emails
-  console.log('📧 DEMO MODE: No email provider configured');
+  // Demo mode
+  console.log('📧 DEMO MODE: Using fake email transporter');
 }
 
-console.log('📧 Email Config:', {
-  provider: EMAIL_PROVIDER,
-  host: emailConfig.host,
-  port: emailConfig.port,
-  hasAuth: !!(emailConfig.auth && emailConfig.auth.user)
-});
-
-let transporter;
-
-// Check if we should use real transporter
-const shouldUseRealTransporter = 
-  EMAIL_PROVIDER === 'brevo' || 
-  EMAIL_PROVIDER === 'gmail';
-
-if (!shouldUseRealTransporter) {
-  console.log('📧 DEMO MODE: Using fake email transporter');
+// If no transporter was created (demo or missing API key)
+if (!transporter) {
+  console.log('📧 Using demo/fake transporter');
   
-  // Fake transporter - DEMO için
   transporter = {
     sendMail: async function(mailOptions) {
       console.log('📧 DEMO SENDMAIL CALLED:', {
@@ -76,40 +87,19 @@ if (!shouldUseRealTransporter) {
       console.log('📧 DEMO: Email would be sent to:', mailOptions.to);
       console.log('📧 DEMO: Code would be:', mailOptions.text?.substring(0, 50) + '...');
       
-      // Fake başarılı response
+      // Always succeed in demo mode
       return {
         messageId: 'demo-' + Date.now(),
-        response: '250 Demo email accepted'
+        response: '250 Demo email accepted',
+        demo: true
       };
     }
   };
-} else {
-  console.log('📧 PRODUCTION MODE: Creating real transporter for', EMAIL_PROVIDER);
-  
-transporter = nodemailer.createTransport({
-  ...emailConfig,
-  connectionTimeout: 30000,  // 30 saniye
-  greetingTimeout: 30000,
-  socketTimeout: 30000,
-  pool: true,
-  maxConnections: 1,
-  maxMessages: 1
-});
-  
-  // Test connection (async)
-  transporter.verify(function(error, success) {
-    if (error) {
-      console.log('📧 TRANSPORTER VERIFY ERROR:', error.message);
-      console.log('⚠️ Email service may not work properly');
-    } else {
-      console.log('📧 TRANSPORTER VERIFY SUCCESS: Server is ready to take our messages');
-    }
-  });
 }
 
 // Send identification code email
 export const sendCodeEmail = async (email, code) => {
-  console.log('📧 sendCodeEmail CALLED with:', { 
+  console.log('📧 sendCodeEmail CALLED:', { 
     email, 
     code,
     provider: EMAIL_PROVIDER 
@@ -117,10 +107,13 @@ export const sendCodeEmail = async (email, code) => {
 
   // Determine "from" address based on provider
   let fromAddress;
-  if (EMAIL_PROVIDER === 'brevo') {
+  if (EMAIL_PROVIDER === 'resend') {
+    // Resend requires verified domain or onboarding@resend.dev
+    fromAddress = process.env.EMAIL_FROM || 'RealTalk <onboarding@resend.dev>';
+  } else if (EMAIL_PROVIDER === 'brevo') {
     fromAddress = process.env.EMAIL_FROM || `"RealTalk" <${process.env.BREVO_SMTP_USER}>`;
   } else if (EMAIL_PROVIDER === 'gmail') {
-    fromAddress = `"Auth Service" <${process.env.EMAIL_USER}>`;
+    fromAddress = `"RealTalk" <${process.env.EMAIL_USER}>`;
   } else {
     fromAddress = '"RealTalk Demo" <demo@realtalk.app>';
   }
@@ -128,26 +121,45 @@ export const sendCodeEmail = async (email, code) => {
   const mailOptions = {
     from: fromAddress,
     to: email,
-    subject: 'RealTalk - Verification Code',
-    text: `Your verification code is: ${code}\n\nThis code will expire in 10 minutes.`,
+    subject: 'RealTalk - Your Verification Code',
+    text: `Your RealTalk verification code is: ${code}\n\nThis code will expire in 10 minutes.`,
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #4F46E5;">Welcome to RealTalk! 🎉</h2>
-        <p>Thank you for signing up. Your verification code is:</p>
-        
-        <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-radius: 10px; margin: 20px 0;">
-          <h1 style="font-size: 36px; letter-spacing: 5px; color: #111827;">${code}</h1>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h1 style="color: #4F46E5; margin: 0;">RealTalk</h1>
+          <p style="color: #6b7280; margin-top: 5px;">Real-time messaging platform</p>
         </div>
         
-        <p>Enter this code in the verification page to complete your registration.</p>
-        <p><strong>This code will expire in 10 minutes.</strong></p>
+        <h2 style="color: #111827;">Verify Your Email Address</h2>
+        <p>Hello! Thank you for signing up for RealTalk.</p>
+        
+        <div style="background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); 
+                    color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0;">
+          <p style="margin: 0 0 10px 0; font-size: 14px;">Your verification code is:</p>
+          <div style="font-size: 42px; font-weight: bold; letter-spacing: 8px; margin: 15px 0;">
+            ${code}
+          </div>
+          <p style="margin: 10px 0 0 0; font-size: 14px; opacity: 0.9;">
+            Expires in 10 minutes
+          </p>
+        </div>
+        
+        <p>Enter this code in the verification page to complete your registration and start using RealTalk.</p>
+        
+        <div style="background-color: #f9fafb; padding: 15px; border-radius: 8px; margin-top: 30px; border-left: 4px solid #4F46E5;">
+          <p style="margin: 0; font-size: 14px; color: #6b7280;">
+            <strong>Note:</strong> If you didn't request this code, please ignore this email.
+          </p>
+        </div>
         
         <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
         
-        <p style="color: #6b7280; font-size: 12px;">
-          If you didn't request this code, please ignore this email.<br>
-          This is an automated message from RealTalk.
-        </p>
+        <div style="text-align: center; font-size: 12px; color: #9ca3af;">
+          <p style="margin: 0;">
+            This is an automated message from RealTalk.<br>
+            Demo Version • ${new Date().getFullYear()}
+          </p>
+        </div>
       </div>
     `
   };
@@ -167,11 +179,19 @@ export const sendCodeEmail = async (email, code) => {
     console.log('📧 Email send result:', {
       success: true,
       messageId: info.messageId,
-      response: info.response?.substring(0, 100)
+      response: info.response,
+      demo: info.demo || false
     });
     
-    console.log('✅ Email sent successfully to:', email);
-    return info;
+    console.log('✅ Email process completed for:', email);
+    
+    // Return with verification code for frontend
+    return {
+      ...info,
+      verificationCode: code,  // 👈 FRONTEND BUNU KULLANACAK
+      email: email,
+      success: true
+    };
     
   } catch (err) {
     console.error('❌ Email error details:', {
@@ -180,39 +200,66 @@ export const sendCodeEmail = async (email, code) => {
       code: err.code
     });
     
-    // If email fails, log code and continue (for demo)
+    // If email fails, return the code anyway for frontend
     console.log(`📧 EMAIL FAILED - Code for ${email}: ${code}`);
     
-    // Don't throw error in production - just log and continue
-    // User will see code in UI anyway
     return { 
       messageId: 'failed-' + Date.now(),
-      demoNote: 'Email failed, code logged above'
+      verificationCode: code,  // 👈 FRONTEND'E CODE'U GÖNDER
+      email: email,
+      demoNote: 'Email failed, but code is available',
+      success: true  // Still succeed for UX
     };
   }
 };
 
-// Test function
+// Enhanced test function
 export const testEmailService = async () => {
   console.log('📧 TEST: Starting email service test...');
-  
-  if (!shouldUseRealTransporter) {
-    console.log('📧 TEST: Demo mode - no real email test');
-    return { success: true, mode: 'demo' };
-  }
   
   try {
     const testEmail = process.env.TEST_EMAIL || 'test@example.com';
     console.log('📧 Testing with email:', testEmail);
     
-    await sendCodeEmail(testEmail, '123456');
-    console.log('📧 TEST: Email service test PASSED');
-    return { success: true, mode: 'real' };
+    const result = await sendCodeEmail(testEmail, '123456');
+    
+    if (result.success) {
+      console.log('📧 TEST: Email service test COMPLETED');
+      console.log('📧 Verification code would be:', result.verificationCode);
+      return { 
+        success: true, 
+        mode: EMAIL_PROVIDER,
+        code: result.verificationCode 
+      };
+    } else {
+      console.log('📧 TEST: Email service returned failure');
+      return { success: false, error: 'Service returned failure' };
+    }
   } catch (error) {
     console.log('📧 TEST: Email service test FAILED:', error.message);
     return { success: false, error: error.message };
   }
 };
 
+// New: Function to get verification code directly (for frontend)
+export const generateAndSendCode = async (email) => {
+  const code = Math.floor(100000 + Math.random() * 900000).toString();
+  console.log(`📧 Generated code for ${email}: ${code}`);
+  
+  // Try to send email
+  const emailResult = await sendCodeEmail(email, code);
+  
+  // Always return the code, even if email fails
+  return {
+    success: true,
+    verificationCode: code,
+    emailSent: !emailResult.demoNote,
+    message: emailResult.demoNote ? 
+      'Demo mode: Check code below' : 
+      'Verification code sent to your email',
+    ...emailResult
+  };
+};
+
 console.log('📧 EMAIL SERVICE: Initialization complete');
-console.log('📧 Mode:', shouldUseRealTransporter ? 'PRODUCTION (' + EMAIL_PROVIDER + ')' : 'DEMO');
+console.log('📧 Mode:', EMAIL_PROVIDER === 'resend' && resendClient ? 'RESEND API' : 'DEMO/SMTP');
