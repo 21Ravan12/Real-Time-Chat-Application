@@ -6,13 +6,14 @@
 
 ## ⚡ INSTANT ACCESS
 
-| **Demo Credentials** | |
+| **Demo Accounts** | |
 |-------------------|---|
-| **Email** | `demo@realtalk.com` |
-| **Password** | `Demo123!` |
-| **Verification Code** | `123456` |
+| **👤 Alice** | `alice@realtalk.com` / `Demo123!` |
+| **👤 Bob** | `bob@realtalk.com` / `Demo123!` |
+| **👤 Charlie** | `charlie@realtalk.com` / `Demo123!` |
+| **👤 Dave** | `dave@realtalk.com` / `Demo123!` |
 
-**→ Copy & paste these credentials and start chatting in 5 seconds!**
+**✅ Pre-configured friends & groups ready to test!**
 
 ---
 
@@ -288,8 +289,6 @@ MIT License - Free for educational and commercial use
 ---
 
 **🎯 Demo Link: [https://real-time-chat-application-tau-seven.vercel.app/](https://real-time-chat-application-tau-seven.vercel.app/)**  
-**🔑 Demo Login: demo@realtalk.com / Demo123!**  
-**📧 Demo Code: 123456**
 
 ---
 
