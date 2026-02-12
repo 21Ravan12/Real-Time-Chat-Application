@@ -1018,7 +1018,7 @@ function openFriendDetail(friend) {
     document.getElementById('friend-detail-name').textContent = friend.name || 'Unknown Friend';
     
     // Set status (you might want to add status to your friend object)
-    const status = friend.status || 'Online';
+    const status = friend.status || 'Ofline';
     document.getElementById('friend-detail-status').textContent = status;
     document.getElementById('friend-detail-status').className = `detail-info ${status.toLowerCase()}`;
     
