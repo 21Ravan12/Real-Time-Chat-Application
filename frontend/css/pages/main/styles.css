@@ -1263,13 +1263,61 @@ body {
 
 @media screen and (max-width: 768px) {
     .navigation-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 50%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(15, 15, 26, 0.98);
+        -webkit-backdrop-filter: var(--glass-blur);
+        backdrop-filter: var(--glass-blur);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 30px 30px;
+        gap: 1rem;
+        transition: right 0.3s ease;
+        z-index: 999;
+        border-left: 1px solid var(--border-color);
+        box-shadow: var(--shadow-xl);
     }
-    
+
+    .navigation-links.active {
+        right: 0;
+    }
+
     .mobile-menu-btn {
         display: flex;
+        z-index: 1001;
     }
-    
+
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        background: var(--primary);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+        background: var(--primary);
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    .login-button {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }    
     .hero-stats {
         flex-direction: column;
         gap: 1.5rem;
