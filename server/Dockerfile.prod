@@ -1,54 +1,35 @@
-# Multi-stage build için node:18-alpine kullan
+# Stage 1: Builder
 FROM node:18-alpine AS builder
 
-# Çalışma dizini oluştur
 WORKDIR /app
 
-# Sadece package dosyalarını kopyala
-COPY package*.json ./
+# Copy package.json only
+COPY package.json ./
 
-# Production dependencies kur (cache için önce bu)
-RUN npm ci --only=production
+# Generate package-lock.json if it doesn't exist
+RUN if [ ! -f package-lock.json ]; then \
+        npm install --package-lock-only; \
+    fi
+
+# Copy package-lock.json if it exists from local, or use generated one
+COPY package-lock.json* ./
+
+# Install production dependencies with ci (now lockfile exists)
+RUN npm ci --omit=dev
 
 # Stage 2: Production image
 FROM node:18-alpine
 
-# Metadata
-LABEL maintainer="Ravan <realtalk@app.com>"
-LABEL version="2.0"
-LABEL description="RealTalk Backend Production Image"
-
-# Çalışma dizini
 WORKDIR /app
 
-# Non-root user oluştur
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S realtalk -u 1001
 
-# Dependencies'i builder'dan kopyala
 COPY --from=builder /app/node_modules ./node_modules
+COPY . .
 
-# Uygulama kodunu kopyala
-COPY --chown=realtalk:nodejs . .
-
-# Gerekli dizinleri oluştur
-RUN mkdir -p logs uploads tmp && \
-    chown -R realtalk:nodejs logs uploads tmp && \
-    chmod -R 755 logs uploads tmp
-
-# Environment değişkenleri
-ENV NODE_ENV=production
-ENV PORT=5000
-
-# Port exposure
-EXPOSE 5000
-
-# User değiştir
+RUN chown -R realtalk:nodejs /app
 USER realtalk
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:4000/health || exit 1
-
-# Start komutu
-CMD ["node", "server.js"]
+EXPOSE 3000
+CMD ["npm", "start"]
