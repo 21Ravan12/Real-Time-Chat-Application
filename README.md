@@ -310,7 +310,7 @@ hotfix/     # Critical production fixes
 
 ### **Live Demo Limitations (Free Tier)**
 ```yaml
-Railway:     $5 credit expires ~08.03.2026
+Railway:     $5 credit expires ~19.05.2026
 MongoDB:     512MB free (permanent)
 Upstash:     10k commands/day (resets daily)
 Cloudinary:  25GB storage (permanent)
@@ -340,7 +340,7 @@ If you find this project useful, please consider:
 > **Disclaimer**: This project demonstrates advanced full-stack development capabilities. For production deployment, additional security reviews, load testing, and compliance checks are recommended based on specific use cases and regulatory requirements.
 
 ---
-*Last Updated: February 11, 2026 | Version: 2.0 | LoC: ~15,000 | Status: 🟢 Production-Ready | Demo: 🟢 Online*
+*Last Updated: 19/04/2026 | Version: 2.0 | LoC: ~15,000 | Status: 🟢 Production-Ready | Demo: 🟢 Online*
 
 ---
 
