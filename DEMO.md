@@ -129,14 +129,14 @@ This demo runs entirely on **free tiers**. Here's what you need to know:
 
 | Service | Free Tier Limit | Status | Expiry |
 |--------|-----------------|--------|--------|
-| **Railway** (Backend) | $5 credit | ✅ Active | ~08.03.2026 |
+| **Railway** (Backend) | $5 credit | ✅ Active | ~19.05.2026 |
 | **MongoDB Atlas** | 512MB storage | ✅ Active | Permanent |
 | **Upstash Redis** | 10k commands/day | ✅ Active | Daily reset |
 | **Cloudinary** | 25GB storage | ✅ Active | Permanent |
 | **SendGrid** | 100 emails/day | ✅ Active | Daily reset |
 | **Vercel** | 100GB bandwidth | ✅ Active | Monthly reset |
 
-**→ If the demo is down, Railway credit probably expired (happens around 08.03.2026).**  
+**→ If the demo is down, Railway credit probably expired (happens around 19.05.2026).**  
 **→ The code still works perfectly - deploy it yourself!**
 
 ---
