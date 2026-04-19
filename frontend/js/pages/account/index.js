@@ -90,7 +90,7 @@ async function changeProfileData() {
   console.log('Saving profile data...', { name, bio, hasImage: !!profileImageInput.files[0] });
 
   try {
-    const response = await fetch('https://real-time-chat-application-production-faea.up.railway.app/api/v1/users/', {
+    const response = await fetch('https://real-time-chat-application-production-03a5.up.railway.app/api/v1/users/', {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${token}`,
