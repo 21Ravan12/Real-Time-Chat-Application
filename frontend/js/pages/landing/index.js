@@ -73,7 +73,7 @@ async function fetchChatData(Allow) {
 
         const token = sessionStorage.getItem('jwt'); // or sessionStorage.getItem('token')
 
-        const responseFriends = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/friends`, {
+        const responseFriends = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/friends`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ async function fetchChatData(Allow) {
             }
         });
 
-        const responseFriendsRequests = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/friends/requests`, {
+        const responseFriendsRequests = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/friends/requests`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ async function fetchChatData(Allow) {
             }
         });
 
-        const responseGroups = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/groups`, {
+        const responseGroups = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/groups`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -415,7 +415,7 @@ function addFriend(event) {
 
     const token = sessionStorage.getItem('jwt'); // or sessionStorage.getItem('token')
 
-    fetch("https://real-time-chat-application-production-03a5.up.railway.app/api/v1/friends/sendFriendRequest", {
+    fetch("https://real-time-chat-application-production-cb71.up.railway.app/api/v1/friends/sendFriendRequest", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -445,7 +445,7 @@ function addFriend(event) {
 
 function acceptFriendRequest(requestId) {
     const token = sessionStorage.getItem('jwt');
-    fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/friends/${encodeURIComponent(requestId)}/accept`, {
+    fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/friends/${encodeURIComponent(requestId)}/accept`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -474,7 +474,7 @@ function acceptFriendRequest(requestId) {
 
 function rejectFriendRequest(requestId) {
     const token = sessionStorage.getItem('jwt');
-    fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/friends/${encodeURIComponent(requestId)}/reject`, {
+    fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/friends/${encodeURIComponent(requestId)}/reject`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -512,7 +512,7 @@ function createGroup(event) {
 
     const token = sessionStorage.getItem('jwt'); // or sessionStorage.getItem('token')
 
-    fetch("https://real-time-chat-application-production-03a5.up.railway.app/api/v1/groups", {
+    fetch("https://real-time-chat-application-production-cb71.up.railway.app/api/v1/groups", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -558,7 +558,7 @@ async function addUserToGroup(event) {
     const token = sessionStorage.getItem('jwt');
 
     try {
-        const response = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/groups/${encodeURIComponent(groupId)}/members`, {
+        const response = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/groups/${encodeURIComponent(groupId)}/members`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -668,7 +668,7 @@ async function handleUserClick(event) {
     const token = sessionStorage.getItem('jwt'); // or sessionStorage.getItem('token')
 
     try {
-        const response = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/chats/${encodeURIComponent(to)}`, {
+        const response = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/chats/${encodeURIComponent(to)}`, {
         method: 'GET',
         headers: { 
             'Content-Type': 'application/json',
@@ -793,7 +793,7 @@ async function handleGroupClick(event) {
     const token = sessionStorage.getItem('jwt'); // or sessionStorage.getItem('token')
 
     try {
-        const response = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/chats/group/${encodeURIComponent(to)}`, {
+        const response = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/chats/group/${encodeURIComponent(to)}`, {
         method: 'GET',
         headers: { 
             'Content-Type': 'application/json',
@@ -852,7 +852,7 @@ async function readMyMessages(id, type) {
         const token = sessionStorage.getItem('jwt'); // or sessionStorage.getItem('token')
 
         console.log('Marking messages as read for:', id, 'Type:', type);
-        const response = await fetch(`https://real-time-chat-application-production-03a5.up.railway.app/api/v1/chats/mark-read`, { 
+        const response = await fetch(`https://real-time-chat-application-production-cb71.up.railway.app/api/v1/chats/mark-read`, { 
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -980,7 +980,7 @@ async function changeProfileData() {
   console.log('Saving profile data...', { name, bio, hasImage: !!profileImageInput.files[0] });
 
   try {
-    const response = await fetch('https://real-time-chat-application-production-03a5.up.railway.app/api/v1/users/', {
+    const response = await fetch('https://real-time-chat-application-production-cb71.up.railway.app/api/v1/users/', {
       method: 'PATCH',
       headers: {
         "Authorization": `Bearer ${token}`,
