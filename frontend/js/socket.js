@@ -6,7 +6,7 @@ function joinChat() {
   
   if (profileData && token) {
 
-    socket = io('https://real-time-chat-application-production-03a5.up.railway.app/', {
+    socket = io('https://real-time-chat-application-production-cb71.up.railway.app/', {
       auth: {
         token: token
       }
