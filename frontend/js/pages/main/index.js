@@ -10,7 +10,6 @@
                 menuBtn.classList.toggle('active');
             });
 
-            // Menü dışına tıklandığında kapat
             document.addEventListener('click', function(e) {
                 if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
                     nav.classList.remove('active');
